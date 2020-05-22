@@ -1,6 +1,10 @@
 .s6MaxV__02-texts {
   padding: 64rem 2rem;
 
+  @media only screen and (max-width: 500px) {
+    padding: 52rem 2rem;
+  }
+
   &__text {
     width: 80%;
     max-width: 72rem;
@@ -12,6 +16,10 @@
 
     &:first-of-type {
       margin-bottom: 32rem;
+
+      @media only screen and (max-width: 500px) {
+        margin-bottom: 24rem;
+      }
     }
 
     & h2 {

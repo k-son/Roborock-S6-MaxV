@@ -17,6 +17,16 @@
     @include center;
     top: 10rem;
     height: 70rem;
+
+    @media only screen and (max-width: 500px) {
+      top: 15rem;
+      height: 60rem;
+    }
+
+    @media only screen and (max-width: 400px) {
+      top: 20rem;
+      height: 55rem;
+    }
   }
 }
 
@@ -25,4 +35,7 @@
 .fixedRoborockImage {
   position: fixed;
   top: 0;
+
+  @media only screen and (max-width: 500px) {
+  }
 }

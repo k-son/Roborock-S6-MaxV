@@ -1,6 +1,7 @@
 // 01 Header
 const headerRoborockImages = document.querySelectorAll('.s6MaxV__01-header__img');
-const headerRoborockImageTop = document.querySelector('.s6MaxV__01-header__img').offsetTop;
+const headerRoborockImage = document.querySelector('.s6MaxV__01-header__img');
+let headerRoborockImageTop = headerRoborockImage.offsetTop;
 
 // Helper functions
 function debounce(func, wait, immediate) {
@@ -19,6 +20,9 @@ function debounce(func, wait, immediate) {
 };
 
 //// 01 HEADER
+// update headerRoborockImageTop value on window resize
+window.addEventListener('resize', () => headerRoborockImageTop = headerRoborockImage.offsetTop);
+
 // after scroll down more than 'headerRoborockImageTop' value, change images' position to fixed and center them in viewport
 function fixedPositionHeaderRoborockImages() {
   if (window.pageYOffset > headerRoborockImageTop) {
@@ -32,7 +36,7 @@ function fixedPositionHeaderRoborockImages() {
 function replaceHeaderRoborockImages() {
   let distanceFromTop = headerRoborockImageTop;
   for (let i=0; i<headerRoborockImages.length; i++) {
-    distanceFromTop += 32;
+    distanceFromTop += 30;
     if (window.pageYOffset >= distanceFromTop) {
       headerRoborockImages.forEach(el => el.classList.add('displayNone'));
       headerRoborockImages[i].classList.remove('displayNone');
