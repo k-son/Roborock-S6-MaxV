@@ -1,13 +1,33 @@
 .s6MaxV__01-header {
+  position: relative;
   width: 100%;
   height: 90rem;
   background-image: url(../images/heros-s6maxV-banner.jpg);
   background-size: cover;
   background-position: center;
-  border: 1px solid transparent; //?
+  border: .1px solid transparent; //?
+  overflow: hidden;
 
   &__text {
     position: relative;
-    margin-top: 9.6rem;
+    margin-top: 8rem;
+    padding: 0 2rem;
   }
+
+  &__img {
+    @include center;
+    top: 10rem;
+    height: 70rem;
+  }
+}
+
+.sram {
+  height: 300rem;
+}
+
+
+// js classes 
+.fixedRoborockImage {
+  position: fixed;
+  top: 0;
 }
