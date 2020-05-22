@@ -20,7 +20,7 @@ function debounce(func, wait, immediate) {
 
 //// 01 HEADER
 // after scroll down more than 'headerRoborockImageTop' value, change images' position to fixed and center them in viewport
-function fixPositionHeaderRoborockImages() {
+function fixedPositionHeaderRoborockImages() {
   if (window.pageYOffset > headerRoborockImageTop) {
     headerRoborockImages.forEach(el => el.classList.add('fixedRoborockImage'));
   } else {
@@ -32,7 +32,7 @@ function fixPositionHeaderRoborockImages() {
 function replaceHeaderRoborockImages() {
   let distanceFromTop = headerRoborockImageTop;
   for (let i=0; i<headerRoborockImages.length; i++) {
-    distanceFromTop += 35;
+    distanceFromTop += 32;
     if (window.pageYOffset >= distanceFromTop) {
       headerRoborockImages.forEach(el => el.classList.add('displayNone'));
       headerRoborockImages[i].classList.remove('displayNone');
@@ -40,5 +40,5 @@ function replaceHeaderRoborockImages() {
   }
 }
 
-window.addEventListener('scroll', fixPositionHeaderRoborockImages);
+window.addEventListener('scroll', fixedPositionHeaderRoborockImages);
 window.addEventListener('scroll', replaceHeaderRoborockImages);

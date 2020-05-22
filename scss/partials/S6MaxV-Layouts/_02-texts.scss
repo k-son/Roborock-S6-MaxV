@@ -1,0 +1,29 @@
+.s6MaxV__02-texts {
+  padding: 64rem 2rem;
+
+  &__text {
+    width: 80%;
+    max-width: 72rem;
+    margin: 0 auto;
+
+    @media only screen and (max-width: 420px) {
+      width: 90%;
+    }
+
+    &:first-of-type {
+      margin-bottom: 32rem;
+    }
+
+    & h2 {
+      margin-bottom: 3.2rem;
+    }
+
+    & p {
+      font-size: 1.8rem;
+
+      text-align: center;
+      color: var(--color-txt-grey-darker);
+
+    }
+  }
+}
