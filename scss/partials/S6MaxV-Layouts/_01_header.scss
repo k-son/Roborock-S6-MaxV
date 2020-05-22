@@ -1,0 +1,13 @@
+.s6MaxV__01-header {
+  width: 100%;
+  height: 90rem;
+  background-image: url(../images/heros-s6maxV-banner.jpg);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid transparent; //?
+
+  &__text {
+    position: relative;
+    margin-top: 9.6rem;
+  }
+}
