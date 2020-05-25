@@ -69,11 +69,13 @@ function isElementFullyInViewportABC(el) {
   }
 }
 
-function ifElementScrollsUpIntoView(el, pixels) {
+//checks if element has emerged from the bottom certain number of pixels
+function ifElementScrolledUpIntoView(el, pixels) {
   if (el) {
     const position = el.getBoundingClientRect();
     return (
-      (position.top >= 0 && position.top <= (window.innerHeight - pixels))
+      (position.top >= 0 && position.top <= (window.innerHeight - pixels) 
+      || (position.top < 0))
     );
   }
 }
@@ -136,25 +138,25 @@ window.addEventListener('scroll', hideHeaderRoborockImages);
 
 //// *** 04 SEEING ***
 const showImageWithTooltip04 = function() {
-  if (ifElementScrollsUpIntoView(imageSection04Toolpit, 300)) {
+  if (ifElementScrolledUpIntoView(imageSection04Toolpit, 300)) {
     imageSection04Toolpit.classList.remove('opacity0');
   } else {
     imageSection04Toolpit.classList.add('opacity0');
   }
 }
 
-window.addEventListener('scroll', showImageWithTooltip04);
+window.addEventListener('scroll', throttled(200, showImageWithTooltip04));
 //// ** END OF: 04 SEEING **
 
 
 //// *** 05 SEEING ***
 const showImageWithTooltip05 = function() {
-  if (ifElementScrollsUpIntoView(imageSection05Toolpit, 300)) {
+  if (ifElementScrolledUpIntoView(imageSection05Toolpit, 300)) {
     imageSection05Toolpit.classList.remove('opacity0');
   } else {
     imageSection05Toolpit.classList.add('opacity0');
   }
 }
 
-window.addEventListener('scroll', showImageWithTooltip05);
+window.addEventListener('scroll', throttled(200, showImageWithTooltip05));
 //// ** END OF: 05 SEEING **
