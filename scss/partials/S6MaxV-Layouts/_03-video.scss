@@ -1,0 +1,64 @@
+.s6MaxV__03-video {
+  position: relative;
+  margin-top: calc(100vh - 4rem);
+  opacity: 0;
+  transition: all .5s;
+  margin-bottom: 6.4rem;
+  overflow: hidden;
+
+  @media only screen and (max-width: 1000px) {
+    margin-top: 0;
+  }
+
+  &__text {
+    @include center;
+    @include S6MaxV-text-box(100rem);
+    top: 3.2rem;
+    color: #fff;
+    margin-top: 100vh;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .5s;
+    transition-delay: .5s;
+
+    @media only screen and (max-width: 1000px) {
+      position: relative;
+      width: 100%;
+      padding: 3.2rem;
+      background: linear-gradient(to right, #070608, #18161A, #1E1C26,#18161A, #070608);
+    }
+
+    & h2 {
+      margin-bottom: 3.2rem;
+
+      @media only screen and (max-width: 420px) {
+        max-width: 90%;
+      }
+    }
+
+    & p {
+      @include S6MaxV-paragraph(center, #fff);
+
+      @media only screen and (max-width: 1000px) {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      @media only screen and (max-width: 420px) {
+        max-width: 90%;
+      }
+    }
+  }
+
+  &__video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+// js classes
+.slideUp03ToTop {
+ margin-top: 0;
+ opacity: 1;
+}

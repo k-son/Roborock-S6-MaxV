@@ -14,3 +14,30 @@
 } 
 
 /// S6-Max-V mixins
+@mixin S6MaxV-text-box($max-width) {
+  width: 80%;
+  max-width: $max-width;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 420px) {
+    width: 90%;
+  }
+}
+
+@mixin S6MaxV-paragraph($align, $color) {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  text-align: $align;
+  color: $color;
+
+  @media only screen and (max-width: 420px) {
+    font-size: 1.6rem;
+  }
+}
+
+@mixin S6MaxV-note($align, $color) {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: $align;
+  color: $color;
+}

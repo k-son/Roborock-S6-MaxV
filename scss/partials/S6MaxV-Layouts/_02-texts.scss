@@ -1,18 +1,12 @@
 .s6MaxV__02-texts {
-  padding: 64rem 2rem;
+  padding: 64rem 2rem 3.2rem;
 
   @media only screen and (max-width: 500px) {
-    padding: 52rem 2rem;
+    padding: 52rem 2rem 3.2rem;
   }
 
   &__text {
-    width: 80%;
-    max-width: 72rem;
-    margin: 0 auto;
-
-    @media only screen and (max-width: 420px) {
-      width: 90%;
-    }
+    @include S6MaxV-text-box(72rem);
 
     &:first-of-type {
       margin-bottom: 32rem;
@@ -27,11 +21,7 @@
     }
 
     & p {
-      font-size: 1.8rem;
-
-      text-align: center;
-      color: var(--color-txt-grey-darker);
-
+      @include S6MaxV-paragraph(center, var(--color-txt-grey-darker));
     }
   }
 }
