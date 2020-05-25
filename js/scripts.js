@@ -9,8 +9,16 @@ const textSection03 = document.querySelector('.s6MaxV__03-video__text');
 const videoSection03 = document.querySelector('.s6MaxV__03-video__video');
 let section03OffsetTop;
 
+// 04 Seeing
+const imageSection04NoToolpit = document.querySelector('.s6MaxV__04-seeing__img--plain');
+const imageSection04Toolpit = document.querySelector('.s6MaxV__04-seeing__img--tooltip');
 
-// Helper functions
+// 05 Seeing
+const imageSection05NoToolpit = document.querySelector('.s6MaxV__05-seeing__img--plain');
+const imageSection05Toolpit = document.querySelector('.s6MaxV__05-seeing__img--tooltip');
+
+
+/// Helper functions
 function debounced(delay, fn) {
   let timerId;
   return function (...args) {
@@ -37,18 +45,39 @@ function throttled(delay, fn) {
 }
 
 function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    (rect.top <= 0
-      && rect.bottom >= 0)
-    ||
-    (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.top <= (window.innerHeight || document.documentElement.clientHeight))
-    ||
-    (rect.top >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
-  );
+  if (el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      (rect.top <= 0
+        && rect.bottom >= 0)
+      ||
+      (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+      ||
+      (rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+    );
+  }
 }
+
+function isElementFullyInViewportABC(el) {
+  if (el) {
+    const position = el.getBoundingClientRect();
+    return (
+      (position.top >= 0 && position.bottom <= window.innerHeight)
+    );
+  }
+}
+
+function ifElementScrollsUpIntoView(el, pixels) {
+  if (el) {
+    const position = el.getBoundingClientRect();
+    return (
+      (position.top >= 0 && position.top <= (window.innerHeight - pixels))
+    );
+  }
+}
+
 
 //// *** 01 HEADER ***
 // update headerRoborockImageTop value on window resize
@@ -102,3 +131,30 @@ const hideHeaderRoborockImages = function() {
 
 window.addEventListener('scroll', slideUpSection03);
 window.addEventListener('scroll', hideHeaderRoborockImages);
+//// ** END OF: 03 VIDEO AND TEXT **
+
+
+//// *** 04 SEEING ***
+const showImageWithTooltip04 = function() {
+  if (ifElementScrollsUpIntoView(imageSection04Toolpit, 300)) {
+    imageSection04Toolpit.classList.remove('opacity0');
+  } else {
+    imageSection04Toolpit.classList.add('opacity0');
+  }
+}
+
+window.addEventListener('scroll', showImageWithTooltip04);
+//// ** END OF: 04 SEEING **
+
+
+//// *** 05 SEEING ***
+const showImageWithTooltip05 = function() {
+  if (ifElementScrollsUpIntoView(imageSection05Toolpit, 300)) {
+    imageSection05Toolpit.classList.remove('opacity0');
+  } else {
+    imageSection05Toolpit.classList.add('opacity0');
+  }
+}
+
+window.addEventListener('scroll', showImageWithTooltip05);
+//// ** END OF: 05 SEEING **
