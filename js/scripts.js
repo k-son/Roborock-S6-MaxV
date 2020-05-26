@@ -3,11 +3,14 @@ const headerRoborockImages = document.querySelectorAll('.s6MaxV__01-header__img'
 const headerRoborockImage = document.querySelector('.s6MaxV__01-header__img');
 let headerRoborockImageTop = headerRoborockImage.offsetTop;
 
+// 02 Texts
+const penultimateH2 = document.querySelector('.s6MaxV__02-texts__text h2:nth-last-child(2)'); // acts as an anchor for showing up section 03
+
 // 03 Video and text
 const section03 = document.querySelector('.s6MaxV__03-video');
 const textSection03 = document.querySelector('.s6MaxV__03-video__text');
 const videoSection03 = document.querySelector('.s6MaxV__03-video__video');
-let section03OffsetTop;
+let section03OffsetTop = section03.offsetTop;
 
 // 04 Seeing
 const imageSection04NoToolpit = document.querySelector('.s6MaxV__04-seeing__img--plain');
@@ -16,6 +19,12 @@ const imageSection04Toolpit = document.querySelector('.s6MaxV__04-seeing__img--t
 // 05 Seeing
 const imageSection05NoToolpit = document.querySelector('.s6MaxV__05-seeing__img--plain');
 const imageSection05Toolpit = document.querySelector('.s6MaxV__05-seeing__img--tooltip');
+
+// 06 Privacy
+const section06Privacy = document.querySelector('.s6MaxV__06-privacy');
+const privacyText = document.querySelector('.s6MaxV__06-privacy__text');
+const privacyRoborockImage = document.querySelector('.s6MaxV__06-privacy__images__roborock');
+const privacyLockTop = document.querySelector('.s6MaxV__06-privacy__lock__top');
 
 
 /// Helper functions
@@ -114,13 +123,16 @@ window.addEventListener('scroll', replaceHeaderRoborockImages);
 //// *** 03 VIDEO AND TEXT ***
 // when 'section03' comes into view, slide it up and read it offsetTop
 const slideUpSection03 = function() {
-  if (isElementInViewport(section03)) {
-    section03.classList.add('slideUp03ToTop');
+  const rect = penultimateH2.getBoundingClientRect();
+  if (rect.top < 0 && rect.bottom <= window.innerHeight) {
+    section03.classList.add('s6MaxV-slideUpAndShow');
     section03.addEventListener('transitionend', () => {
-      textSection03.classList.add('slideUp03ToTop');
+      textSection03.classList.add('s6MaxV-slideUpAndShow');
       videoSection03.play();
     });
     section03OffsetTop = section03.offsetTop;
+  } else {
+    section03.classList.remove('s6MaxV-slideUpAndShow');
   }
 };
 
@@ -160,3 +172,27 @@ const showImageWithTooltip05 = function() {
 
 window.addEventListener('scroll', throttled(200, showImageWithTooltip05));
 //// ** END OF: 05 SEEING **
+
+
+//// *** 06 PRIVACY ***
+// slide up text
+const showPrivacyText = function() {
+  if (ifElementScrolledUpIntoView(section06Privacy, 300)) {
+    privacyText.classList.add('s6MaxV-slideUpAndShow');
+  } else {
+    privacyText.classList.remove('s6MaxV-slideUpAndShow');
+  }
+}
+
+// animation lock
+const animateLock = function() {
+  if (isElementFullyInViewportABC(privacyRoborockImage)) {
+    privacyLockTop.classList.add('rotate-lock');
+  } else {
+    privacyLockTop.classList.remove('rotate-lock');
+  }
+}
+
+window.addEventListener('scroll', throttled(100, showPrivacyText));
+window.addEventListener('scroll', throttled(200, animateLock));
+//// ** END OF: 06 PRIVACY **

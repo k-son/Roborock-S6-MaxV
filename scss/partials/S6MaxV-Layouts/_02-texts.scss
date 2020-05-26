@@ -21,7 +21,7 @@
     }
 
     & p {
-      @include S6MaxV-paragraph(center, var(--color-txt-grey-darker));
+      @include S6MaxV-paragraph;
     }
   }
 }

@@ -24,7 +24,7 @@
   }
 }
 
-@mixin S6MaxV-paragraph($align, $color) {
+@mixin S6MaxV-paragraph($align: center, $color: var(--color-txt-grey-darker)) {
   font-size: 1.8rem;
   line-height: 1.6;
   text-align: $align;
@@ -35,7 +35,7 @@
   }
 }
 
-@mixin S6MaxV-note($align, $color) {
+@mixin S6MaxV-note($align: center, $color: var(--color-txt-grey-darker)) {
   font-size: 1.2rem;
   line-height: 1.6;
   text-align: $align;

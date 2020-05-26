@@ -1,0 +1,120 @@
+.s6MaxV__06-privacy {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6.4rem 2rem;
+  overflow: hidden;
+
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  &__images {
+    position: relative;
+
+    &__roborock {
+      display: block;
+      width: 40vw;
+      max-width: 50rem;
+      height: auto;
+      padding: 0 2rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        width: 60vw;
+        min-width: 20rem;
+      }
+    }
+  }
+
+    &__lock {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+
+      &__top {
+        position: relative;
+        display: block;
+        width: 8rem;
+        height: auto;
+
+        @media only screen and (max-width: $bp-small) {
+          width: 13vw;
+          max-width: 8rem;
+        }
+      }
+
+      &__body {
+        display: block;
+        width: 8rem;
+        height: auto;
+
+        @media only screen and (max-width: $bp-small) {
+          width: 13vw;
+          max-width: 8rem;
+        }
+      }
+    }
+
+  &__text {
+    padding: 0 4rem;
+    margin-top: 5rem; // animated in js
+    opacity: 0; // animated in js
+    transition: margin-top .2s, opacity .4s;
+
+    @media only screen and (max-width: $bp-medium) {
+      margin-bottom: 6.4rem;
+    }
+
+    & h2 {
+      line-height: 1.6;
+      margin-bottom: 3.2rem;
+    }
+
+    & p {
+      @include S6MaxV-paragraph;
+      margin-bottom: 6.4rem;
+    }
+
+    & h3 {
+      @media only screen and (max-width: 450px) {
+        font-size: 4.4vw;
+      }
+    }
+
+    & h3:not(:last-of-type) {
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  &__never {
+
+    @media only screen and (max-width: $bp-small) {
+      display: block;
+    }
+  }
+}
+
+
+// js classes
+.rotate-lock {
+  animation: rotate-lock .3s linear .5s 1;
+}
+
+@keyframes rotate-lock {
+  0% {
+    top: 0;
+    transform: none;
+  }
+  50% {
+    top: -20px;
+    transform: rotateY(180deg);
+  }
+  0% {
+    top: 0;
+    transform: none;
+  }
+}
