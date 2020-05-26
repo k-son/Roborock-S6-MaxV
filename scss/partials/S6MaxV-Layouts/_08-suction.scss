@@ -1,0 +1,80 @@
+.s6MaxV__08-suction {
+  padding: 0 2rem;
+
+  &__text {
+    width: 70%;
+    max-width: 90rem;
+    margin: 0 auto 6.4rem;
+
+    @media only screen and (max-width: $bp-small) {
+      width: 90%;
+    }
+
+    & h2 {
+      line-height: 1.6;
+      margin-bottom: 1.6rem;
+    }
+
+    & p {
+      @include S6MaxV-paragraph;
+    }
+  }
+
+  &__features {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 6.4rem;
+  }
+
+  &__feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__value {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #6d818d;
+    }
+
+    &__prop {
+      @include S6MaxV-paragraph;
+    }
+  }
+
+  &__suction {
+    position: relative;
+    overflow: hidden;
+
+    &__text {
+      position: absolute;
+      top: 50%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 2;
+
+      &__value {
+        font-size: 16rem;
+        font-weight: 500;
+        color: #6d818d;
+      }
+
+      &__prop {
+        font-size: 5.4rem;
+        text-transform: capitalize;
+        color: #6d818d;
+      }
+    }
+
+    &__video {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin-left: 20%;
+    }
+  }
+}
