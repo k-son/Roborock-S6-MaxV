@@ -26,6 +26,9 @@ const privacyText = document.querySelector('.s6MaxV__06-privacy__text');
 const privacyRoborockImage = document.querySelector('.s6MaxV__06-privacy__images__roborock');
 const privacyLockTop = document.querySelector('.s6MaxV__06-privacy__lock__top');
 
+// 07 Floor
+const imageSection07Floor = document.querySelector('.s6MaxV__07-floor__image');
+
 
 /// Helper functions
 function debounced(delay, fn) {
@@ -196,3 +199,16 @@ const animateLock = function() {
 window.addEventListener('scroll', throttled(100, showPrivacyText));
 window.addEventListener('scroll', throttled(200, animateLock));
 //// ** END OF: 06 PRIVACY **
+
+
+//// *** 07 FLOOR ***
+const slideUpImageSection07Floor = function() {
+  if (isElementInViewport(imageSection07Floor)) {
+    imageSection07Floor.classList.add('s6MaxV-slideUpAndShow');
+  } else {
+    imageSection07Floor.classList.remove('s6MaxV-slideUpAndShow');
+  }
+}
+
+window.addEventListener('scroll', throttled(200, slideUpImageSection07Floor));
+//// ** END OF: 07 FLOOR **

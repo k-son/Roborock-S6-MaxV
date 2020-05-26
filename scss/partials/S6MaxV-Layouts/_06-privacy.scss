@@ -5,6 +5,7 @@
   align-items: flex-start;
   padding: 6.4rem 2rem;
   overflow: hidden;
+  margin-bottom: 6.4rem;
 
   @media only screen and (max-width: $bp-medium) {
     flex-direction: column-reverse;
