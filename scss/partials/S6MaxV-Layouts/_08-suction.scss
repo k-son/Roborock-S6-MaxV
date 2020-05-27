@@ -21,10 +21,23 @@
   }
 
   &__features {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 6.4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 3.2rem;
+
+    @media only screen and (max-width: 750px) {
+      grid-template-columns: repeat(2, 1fr);
+      width: 70%;
+      margin: 0 auto 3.2rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      width: 90%;
+    }
+
+    @media only screen and (max-width: $bp-smaller) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__feature {
@@ -32,14 +45,38 @@
     flex-direction: column;
     align-items: center;
 
+    @media only screen and (max-width: 750px) {
+      margin-bottom: 3.2rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      align-items: flex-start;
+    }
+
     &__value {
       font-size: 4rem;
       font-weight: 700;
       color: #6d818d;
+
+      @media only screen and (max-width: $bp-large) {
+        font-size: 3.2rem;
+      } 
+
+      @media only screen and (max-width: 750px) {
+        font-size: 2.8rem;
+      } 
     }
 
     &__prop {
       @include S6MaxV-paragraph;
+
+      @media only screen and (max-width: $bp-large) {
+        font-size: 1.6rem;
+      } 
+
+      @media only screen and (max-width: 750px) {
+        font-size: 1.4rem;
+      } 
     }
   }
 
@@ -57,24 +94,49 @@
       align-items: flex-start;
       z-index: 2;
 
+      @media only screen and (max-width: $bp-medium) {
+        position: static;
+        top: unset;
+        left: unset;
+        transform: unset;
+        align-items: center;
+        margin-bottom: 3.2rem;
+      }
+
       &__value {
         font-size: 16rem;
         font-weight: 500;
         color: #6d818d;
+
+        @media only screen and (max-width: $bp-medium) {
+          font-size: 20vw;
+        }
       }
 
       &__prop {
         font-size: 5.4rem;
         text-transform: capitalize;
         color: #6d818d;
+
+        @media only screen and (max-width: $bp-medium) {
+          font-size: 6vw;
+        }
       }
     }
 
     &__video {
+      display: block;
       position: relative;
       width: 100%;
       height: auto;
       margin-left: 20%;
+
+      @media only screen and (max-width: $bp-medium) {
+        width: 130%;
+        margin-left: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
 }

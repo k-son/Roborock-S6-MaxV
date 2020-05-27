@@ -1,6 +1,10 @@
 .s6MaxV__07-floor {
   margin-bottom: 12.8rem;
 
+  @media only screen and (max-width: 420px) {
+    margin-bottom: 6.4rem;
+  }
+
   &__text {
     display: flex;
     justify-content: space-evenly;
