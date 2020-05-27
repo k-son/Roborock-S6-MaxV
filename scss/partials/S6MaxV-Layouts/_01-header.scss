@@ -11,6 +11,12 @@
     position: relative;
     margin-top: 8rem;
     padding: 0 2rem;
+
+    & h1 {
+      @media only screen and (max-width: 600px) {
+        text-align: center;
+      }
+    }
   }
 
   &__img {

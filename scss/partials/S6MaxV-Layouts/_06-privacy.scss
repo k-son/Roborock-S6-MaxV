@@ -70,6 +70,11 @@
       margin-bottom: 6.4rem;
     }
 
+    @media only screen and (max-width: 420px) {
+      width: 90%;
+      padding: 0;
+    }
+
     & h2 {
       line-height: 1.6;
       margin-bottom: 3.2rem;
