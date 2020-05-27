@@ -29,6 +29,10 @@ const privacyLockTop = document.querySelector('.s6MaxV__06-privacy__lock__top');
 // 07 Floor
 const imageSection07Floor = document.querySelector('.s6MaxV__07-floor__image');
 
+// 08 Suction
+const suctionFeatures = document.querySelector('.s6MaxV__08-suction__features');
+const suctionVideo = document.querySelector('.s6MaxV__08-suction__suction__video');
+
 
 /// Helper functions
 function debounced(delay, fn) {
@@ -152,63 +156,87 @@ window.addEventListener('scroll', hideHeaderRoborockImages);
 
 
 //// *** 04 SEEING ***
-const showImageWithTooltip04 = function() {
+const showImageWithTooltip04 = throttled(200, function() {
   if (ifElementScrolledUpIntoView(imageSection04Toolpit, 300)) {
     imageSection04Toolpit.classList.remove('opacity0');
   } else {
     imageSection04Toolpit.classList.add('opacity0');
   }
-}
+});
 
-window.addEventListener('scroll', throttled(200, showImageWithTooltip04));
+window.addEventListener('scroll', showImageWithTooltip04);
 //// ** END OF: 04 SEEING **
 
 
 //// *** 05 SEEING ***
-const showImageWithTooltip05 = function() {
+const showImageWithTooltip05 = throttled(200, function() {
   if (ifElementScrolledUpIntoView(imageSection05Toolpit, 300)) {
     imageSection05Toolpit.classList.remove('opacity0');
   } else {
     imageSection05Toolpit.classList.add('opacity0');
   }
-}
+});
 
-window.addEventListener('scroll', throttled(200, showImageWithTooltip05));
+window.addEventListener('scroll', showImageWithTooltip05);
 //// ** END OF: 05 SEEING **
 
 
 //// *** 06 PRIVACY ***
 // slide up text
-const showPrivacyText = function() {
+const showPrivacyText = throttled(100, function() {
   if (ifElementScrolledUpIntoView(section06Privacy, 300)) {
     privacyText.classList.add('s6MaxV-slideUpAndShow');
   } else {
     privacyText.classList.remove('s6MaxV-slideUpAndShow');
   }
-}
+});
 
 // animation lock
-const animateLock = function() {
+const animateLock = throttled(200, function() {
   if (isElementFullyInViewportABC(privacyRoborockImage)) {
     privacyLockTop.classList.add('rotate-lock');
   } else {
     privacyLockTop.classList.remove('rotate-lock');
   }
-}
+});
 
-window.addEventListener('scroll', throttled(100, showPrivacyText));
-window.addEventListener('scroll', throttled(200, animateLock));
+window.addEventListener('scroll', showPrivacyText);
+window.addEventListener('scroll', animateLock);
 //// ** END OF: 06 PRIVACY **
 
 
 //// *** 07 FLOOR ***
-const slideUpImageSection07Floor = function() {
+const slideUpImageSection07Floor = throttled(200, function() {
   if (isElementInViewport(imageSection07Floor)) {
     imageSection07Floor.classList.add('s6MaxV-slideUpAndShow');
   } else {
     imageSection07Floor.classList.remove('s6MaxV-slideUpAndShow');
   }
-}
+});
 
-window.addEventListener('scroll', throttled(200, slideUpImageSection07Floor));
+window.addEventListener('scroll', slideUpImageSection07Floor);
 //// ** END OF: 07 FLOOR **
+
+
+//// *** 08 SUCTION ***
+const slideUpFeaturesSection08Suction = throttled(200, function() {
+  if (isElementInViewport(suctionFeatures)) {
+    suctionFeatures.classList.add('s6MaxV-slideUpAndShow');
+  } else {
+    suctionFeatures.classList.remove('s6MaxV-slideUpAndShow');
+  }
+});
+
+const playVideoSuction = throttled(200, function() {
+  const suctionVideoHeight = suctionVideo.clientHeight;
+  const height = suctionVideoHeight * .75;
+  
+  if (ifElementScrolledUpIntoView(suctionVideo, height)) {
+    suctionVideo.play();
+    window.removeEventListener('scroll', playVideoSuction);
+  }
+});
+
+window.addEventListener('scroll', slideUpFeaturesSection08Suction);
+window.addEventListener('scroll', playVideoSuction);
+//// ** END OF: 08 SUCTION **
