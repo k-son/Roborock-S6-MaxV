@@ -32,6 +32,11 @@ const imageSection07Floor = document.querySelector('.s6MaxV__07-floor__image');
 // 08 Suction
 const suctionFeatures = document.querySelector('.s6MaxV__08-suction__features');
 const suctionVideo = document.querySelector('.s6MaxV__08-suction__suction__video');
+const section08Suction = document.querySelector('.s6MaxV__08-suction__suction');
+
+// 09 Mapping
+const mappingBackground = document.querySelector('.s6MaxV__09-mapping__background');
+const mappingContainer = document.querySelector('.s6MaxV__09-mapping__container')
 
 
 /// Helper functions
@@ -240,3 +245,28 @@ const playVideoSuction = throttled(200, function() {
 window.addEventListener('scroll', slideUpFeaturesSection08Suction);
 window.addEventListener('scroll', playVideoSuction);
 //// ** END OF: 08 SUCTION **
+
+
+//// *** 09 MAPPING ***
+/*
+const abc = function() {
+  const mappingContainerBounds = mappingContainer.getBoundingClientRect();
+  if (mappingContainerBounds.top > 50) {
+    mappingContainer.classList.remove('s6MaxV-slideUpAndShow');
+  }
+};
+
+const handleSectionMapping = throttled(100, function() {
+  const backgroundPosition = mappingBackground.getBoundingClientRect();
+  if (backgroundPosition.top < 0) {
+    mappingBackground.classList.add('positionFixedTop');
+    mappingContainer.classList.add('s6MaxV-slideUpAndShow');
+    setTimeout(() => {
+      window.addEventListener('sroll', abc);
+    })
+  }
+});
+
+window.addEventListener('scroll', handleSectionMapping);
+*/
+//// ** END OF: 09 MAPPING **

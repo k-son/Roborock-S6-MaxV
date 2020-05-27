@@ -1,0 +1,106 @@
+.s6MaxV__09-mapping {
+  position: relative;
+  margin-bottom: 3.2rem;
+
+  --height: 70rem;
+
+  &__background {
+    height: var(--height);
+    width: 100%;
+    background-image: url(../images/s6maxV-mapping-background.jpg);
+    background-position: center;
+    margin-bottom: 6.4rem;
+
+    @media only screen and (max-width: 750px) {
+      height: 40rem;
+      background-position: center 80%;
+    }
+  }
+
+  &__container {
+    //margin-top: 20rem; // animated in js
+    //opacity: 0; // animated in js
+    transition: all .9s;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 3.2rem;
+    background-color: rgba(255, 255, 255, .85);
+
+    @media only screen and (max-width: 750px) {
+      height: fit-content;
+      flex-direction: column;
+      background-color: inherit;
+    }
+  }
+
+  &__text {
+    width: 35%;
+
+    @media only screen and (max-width: 750px) {
+      width: 70%;
+    }
+
+    @media only screen and (max-width: 420px) {
+      width: 90%;
+    }
+
+    & h2 {
+      text-align: left;
+      line-height: 1.4;
+      margin-bottom: 1.6rem;
+    }
+
+    & p {
+      @include S6MaxV-paragraph(left);
+
+      @media only screen and (max-width: 750px) {
+        margin-bottom: 1.6rem;
+       }
+    }
+  }
+
+  &__img {
+    width: 45%;
+    height: auto;
+
+    @media only screen and (max-width: 750px) {
+      width: 70%;
+    }
+  }
+
+  &__floors {
+    height: var(--height);
+
+    @media only screen and (max-width: 750px) {
+      height: fit-content;
+    }
+  }
+
+  &__mopping {
+    height: var(--height);
+
+    @media only screen and (max-width: 750px) {
+      height: fit-content;
+    }
+
+    & p:first-of-type {
+      margin-bottom: 6.4rem;
+
+      @media only screen and (max-width: 750px) {
+       margin-bottom: 3.2rem;
+      }
+    }
+  }
+
+  &__order {
+    height: var(--height);
+
+    @media only screen and (max-width: 750px) {
+      height: fit-content;
+    }
+  }
+}
