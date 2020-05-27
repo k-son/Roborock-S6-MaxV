@@ -38,6 +38,9 @@ const section08Suction = document.querySelector('.s6MaxV__08-suction__suction');
 const mappingBackground = document.querySelector('.s6MaxV__09-mapping__background');
 const mappingContainer = document.querySelector('.s6MaxV__09-mapping__container')
 
+// 10 Learning
+const learningContainer = document.querySelector('.s6MaxV__10-learning__container');
+
 
 /// Helper functions
 function debounced(delay, fn) {
@@ -270,3 +273,16 @@ const handleSectionMapping = throttled(100, function() {
 window.addEventListener('scroll', handleSectionMapping);
 */
 //// ** END OF: 09 MAPPING **
+
+
+//// *** 10 LEARNING ***
+const slideUpLearningContainer = throttled(200, function() {
+  if (ifElementScrolledUpIntoView(learningContainer, 400)) {
+    learningContainer.classList.add('s6MaxV-slideUpAndShow');
+  } else {
+    learningContainer.classList.remove('s6MaxV-slideUpAndShow');
+  }
+})
+
+window.addEventListener('scroll', slideUpLearningContainer);
+//// ** END OF: 10 LEARNING **

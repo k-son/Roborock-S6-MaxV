@@ -1,0 +1,79 @@
+.s6MaxV__10-learning {
+  position: relative;
+  padding: 0 2rem;
+  margin-bottom: 26.4rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    margin-bottom: 18.4rem;
+  }
+
+  @media only screen and (max-width: 420px) {
+    margin-bottom: 14.4rem;
+  }
+
+  &__container {
+    margin-top: 20rem; // animated in js
+    opacity: 0; // animated in js
+    transition: opacity .35s, margin-top .5s;
+  }
+
+  &__text {
+    @include S6MaxV-text-box(80rem);
+    margin-bottom: 10.4rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      margin-bottom: 8rem;
+    }
+
+    @media only screen and (max-width: 420px) {
+      margin-bottom: 6.4rem;
+    }
+
+    & h2 {
+      margin-bottom: 3.2rem;
+
+      @media only screen and (max-width: 420px) {
+        margin-bottom: 1.6rem;
+      }
+    }
+
+    & p {
+      @include S6MaxV-paragraph;
+    }
+  }
+
+  &__graphic {
+    display: block;
+    width: 54rem;
+    height: auto;
+    margin: 0 auto;
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 36rem;
+    }
+
+    @media only screen and (max-width: 420px) {
+      width: 80%;
+    }
+  }
+
+  &__picture {
+    display: block;
+    width: 48rem;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    bottom: -20rem;
+    transform: translateX(-50%);
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 32rem;
+      bottom: -12rem;
+    }
+
+    @media only screen and (max-width: 420px) {
+      width: 60%;
+      bottom: -8rem;
+    }
+  }
+}
