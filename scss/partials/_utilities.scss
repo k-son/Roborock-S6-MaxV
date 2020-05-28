@@ -14,6 +14,79 @@
   opacity: 1 !important;
 }
 
+.tooltip {
+  position: relative;
+  border-bottom: 1px dotted #4d88fe;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover ~ .tooltiptext {
+    bottom: 0;
+    opacity: 1;
+  }
+
+  &:hover + sup {
+    color: #4d88fe;
+  }
+
+  & sup {
+    font-weight: 500;
+  }
+}
+/*
+.tooltiptext {
+  display: block;
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30rem;
+  font-size: 1.4rem;
+  padding: 1.2rem 3.2rem;
+  color: var(--color-txt-grey-darker);
+  background-color: #fff;
+  border: 3px solid var(--color-roborock);
+  border-radius: 2.5rem;
+  box-shadow: 0px 8px 7px -6px rgba(0, 0, 0, .3);
+  transition: opacity .2s;
+  transition-delay: .3s;
+  opacity: 0;
+  filter: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-top: 2rem solid var(--color-roborock);
+  }
+}
+*/
+
+.tooltiptext {
+  display: block;
+  position: fixed;
+  bottom: -10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 130rem;
+  font-size: 1.4rem;
+  text-align: left;
+  padding: 1.6rem 4rem;
+  color: #fff;
+  background-color: #4d88fe;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity .2s, bottom .3s;
+}
 
 // js classes
 .s6MaxV-slideUpAndShow {
