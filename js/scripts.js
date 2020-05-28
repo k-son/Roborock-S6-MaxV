@@ -1,3 +1,4 @@
+/// VARIABLES
 // 01 Header
 const headerRoborockImages = document.querySelectorAll('.s6MaxV__01-header__img');
 const headerRoborockImage = document.querySelector('.s6MaxV__01-header__img');
@@ -41,8 +42,12 @@ const mappingContainer = document.querySelector('.s6MaxV__09-mapping__container'
 // 10 Learning
 const learningContainer = document.querySelector('.s6MaxV__10-learning__container');
 
+// 11 Features
+const section11Features = document.querySelector('.s6MaxV__11-features');
+const featuresSection11 = document.querySelectorAll('.s6MaxV__11-features__feature');
 
-/// Helper functions
+
+/// HELPER FUNCTIONS
 function debounced(delay, fn) {
   let timerId;
   return function (...args) {
@@ -104,6 +109,8 @@ function ifElementScrolledUpIntoView(el, pixels) {
   }
 }
 
+
+/// MAIN SCRIPTS
 
 //// *** 01 HEADER ***
 // update headerRoborockImageTop value on window resize
@@ -286,3 +293,16 @@ const slideUpLearningContainer = throttled(200, function() {
 
 window.addEventListener('scroll', slideUpLearningContainer);
 //// ** END OF: 10 LEARNING **
+
+
+//// *** 11 FEATURES ***
+const slideUpFeatures = throttled(200, function() {
+  if (ifElementScrolledUpIntoView(section11Features, 300)) {
+    featuresSection11.forEach(el => el.classList.add('s6MaxV-slideUpAndShow'))
+  } else {
+    featuresSection11.forEach(el => el.classList.remove('s6MaxV-slideUpAndShow'));
+  }
+});
+
+window.addEventListener('scroll', slideUpFeatures);
+//// ** END OF: 11 FEATURES **
