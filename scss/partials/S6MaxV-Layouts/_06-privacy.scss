@@ -68,7 +68,7 @@
     padding: 0 4rem;
     margin-top: 5rem; // animated in js
     opacity: 0; // animated in js
-    transition: margin-top .2s, opacity .4s;
+    transition: opacity .4s, margin-top .5s;
 
     @media only screen and (max-width: $bp-medium) {
       margin-bottom: 6.4rem;

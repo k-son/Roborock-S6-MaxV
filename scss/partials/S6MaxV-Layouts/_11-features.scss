@@ -13,6 +13,11 @@
   }
 
   &__feature {
+    position: relative;
+    margin-top: 15rem; // animated in js
+    opacity: 0; // animated in js
+    transition: opacity .4s, margin-top .5s;
+
     @media only screen and (max-width: 750px) {
       display: flex;
       align-items: center;
