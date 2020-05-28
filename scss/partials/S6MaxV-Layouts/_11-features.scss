@@ -1,0 +1,82 @@
+.s6MaxV__11-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4.8rem;
+  column-gap: 4.8rem;
+  row-gap: 4.8rem;
+  padding: 11.2rem;
+  background-color: #f4f4f4;
+
+  @media only screen and (max-width: 750px) {
+    grid-template-columns: 1fr;
+    padding: 8rem 12vw;
+  }
+
+  &__feature {
+    @media only screen and (max-width: 750px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 8rem;
+    height: 8rem;
+    background-image: url(../../../images/s6maxV-features_sprites.png);
+    background-size: 8rem auto;
+    margin-bottom: .8rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 6rem;
+      height: 6rem;
+      background-size: 6rem auto;
+    }
+
+    @media only screen and (max-width: 750px) {
+      flex-shrink: 0;
+      margin-bottom: 0;
+      margin-right: 1.6rem;
+    }
+
+    &--room-recognition {
+      background-position-y: 33.333333%;
+    }
+
+    &--volume {
+      background-position-y: 83.333333%;
+    }
+
+    &--battery {
+      background-position-y: 0%;
+    }
+
+    &--filter {
+      background-position-y: 16.666667%;
+    }
+
+    &--top-up {
+      background-position-y: 50%;
+    }
+
+    &--sensor {
+      background-position-y: 100%;
+    }
+
+    &--wheels {
+      background-position-y: 66.666667%;
+    }
+  }
+
+  & h4 {
+    font-size: 1.8rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      font-size: 1.6rem;
+    }
+
+    @media only screen and (max-width: 750px) {
+      display: inline-block;
+    }
+  }
+}
