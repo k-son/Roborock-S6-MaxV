@@ -15,18 +15,19 @@
 }
 
 .tooltip {
-  position: relative;
   border-bottom: 1px dotted var(--color-info);
+  vertical-align: baseline;
 
   &:hover {
     cursor: pointer;
   }
 
-  &:hover + sup {
+  &:focus {
     color: var(--color-info);
   }
-  & sup {
-    font-weight: 500;
+
+  &:hover + sup {
+    color: var(--color-info);
   }
 }
 
@@ -82,6 +83,7 @@
    border: 3px solid var(--color-info);
    border-radius: 50%;
    vertical-align: middle;
+   transition: background-color .2s;
   
    &::before,
    &::after {
@@ -114,5 +116,14 @@
    &:hover::before,
    &:hover::after {
      transform: rotate(0);
+   }
+
+   &:focus {
+     background-color: var(--color-info);
+   }
+
+   &:focus::before,
+   &:focus::after {
+     background-color: #fff;
    }
  }
