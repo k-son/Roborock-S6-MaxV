@@ -46,10 +46,16 @@ const learningContainer = document.querySelector('.s6MaxV__10-learning__containe
 const section11Features = document.querySelector('.s6MaxV__11-features');
 const featuresSection11 = document.querySelectorAll('.s6MaxV__11-features__feature');
 
+// Tooltips
+let tooltips = document.querySelectorAll('.tooltip');
+let tooltipTexts = document.querySelectorAll('.tooltiptext');
+const closeTooltipBtns = document.querySelectorAll('.tooltipCloseBtn');
+
 
 /// HELPER FUNCTIONS
 function debounced(delay, fn) {
   let timerId;
+
   return function (...args) {
       if (timerId) {
           clearTimeout(timerId);
@@ -63,6 +69,7 @@ function debounced(delay, fn) {
 
 function throttled(delay, fn) {
   let lastCall = 0;
+
   return function (...args) {
       const now = (new Date).getTime();
       if (now - lastCall < delay) {
@@ -76,6 +83,7 @@ function throttled(delay, fn) {
 function isElementInViewport(el) {
   if (el) {
     const rect = el.getBoundingClientRect();
+
     return (
       (rect.top <= 0
         && rect.bottom >= 0)
@@ -92,6 +100,7 @@ function isElementInViewport(el) {
 function isElementFullyInViewportABC(el) {
   if (el) {
     const position = el.getBoundingClientRect();
+
     return (
       (position.top >= 0 && position.bottom <= window.innerHeight)
     );
@@ -102,6 +111,7 @@ function isElementFullyInViewportABC(el) {
 function ifElementScrolledUpIntoView(el, pixels) {
   if (el) {
     const position = el.getBoundingClientRect();
+
     return (
       (position.top >= 0 && position.top <= (window.innerHeight - pixels) 
       || (position.top < 0))
@@ -128,6 +138,7 @@ function fixedPositionHeaderRoborockImages() {
 // after scroll down more than 'headerRoborockImageTop' value, start repleacing images
 function replaceHeaderRoborockImages() {
   let distanceFromTop = headerRoborockImageTop;
+
   for (let i=0; i<headerRoborockImages.length; i++) {
     distanceFromTop += 30;
     if (window.pageYOffset >= distanceFromTop) {
@@ -146,6 +157,7 @@ window.addEventListener('scroll', replaceHeaderRoborockImages);
 // when 'section03' comes into view, slide it up and read it offsetTop
 const slideUpSection03 = function() {
   const rect = penultimateH2.getBoundingClientRect();
+
   if (rect.top < 0 && rect.bottom <= window.innerHeight) {
     section03.classList.add('s6MaxV-slideUpAndShow');
     section03.addEventListener('transitionend', () => {
@@ -306,3 +318,34 @@ const slideUpFeatures = throttled(200, function() {
 
 window.addEventListener('scroll', slideUpFeatures);
 //// ** END OF: 11 FEATURES **
+
+
+//// *** TOOLTIPS ***
+tooltips = Array.from(tooltips);
+
+for (let i=0; i<tooltips.length; i++) {
+  tooltips[i].addEventListener('click', function() {
+
+    // close any other open tooltip
+    const index = tooltips.indexOf(tooltips[i]);
+    const clonedTooltips = tooltips.slice(0);
+    clonedTooltips.splice(index, 1);
+    clonedTooltips.forEach(el => {
+      const tooltipBox = el.nextElementSibling.nextElementSibling;
+      tooltipBox.classList.remove('showTooltipText');
+      el.classList.remove('colorInfo');
+    });
+
+    // open selected tooltip
+    const tooltipBox = tooltips[i].nextElementSibling.nextElementSibling;
+    tooltipBox.classList.toggle('showTooltipText');
+    tooltips[i].classList.toggle('colorInfo');
+
+    // close open tooltip on close button press
+    closeTooltipBtns[i].addEventListener('click', () => {
+      tooltipBox.classList.remove('showTooltipText');
+      tooltips[i].classList.remove('colorInfo');
+    })
+  })
+}
+//// ** END OF: TOOLTIPS **
