@@ -296,7 +296,7 @@ window.addEventListener('scroll', handleSectionMapping);
 
 //// *** 10 LEARNING ***
 const slideUpLearningContainer = throttled(200, function() {
-  if (ifElementScrolledUpIntoView(learningContainer, 400)) {
+  if (ifElementScrolledUpIntoView(learningContainer, 300)) {
     learningContainer.classList.add('s6MaxV-slideUpAndShow');
   } else {
     learningContainer.classList.remove('s6MaxV-slideUpAndShow');
