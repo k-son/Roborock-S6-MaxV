@@ -5,11 +5,16 @@
   --height: 70rem;
 
   &__background {
-    height: var(--height);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: var(--height);
     width: 100%;
+    margin-bottom: 4rem;
     background-image: url(../images/s6maxV-mapping-background.jpg);
+    background-size: cover;
     background-position: center;
-    margin-bottom: 6.4rem;
+    z-index: -1;
 
     @media only screen and (max-width: 750px) {
       height: 40rem;
@@ -17,18 +22,17 @@
     }
   }
 
-  &__container {
-    //margin-top: 20rem; // animated in js
-    //opacity: 0; // animated in js
-    transition: all .9s;
-  }
-
   &__box {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: var(--height);
     padding: 3.2rem;
     background-color: rgba(255, 255, 255, .85);
+    transition: opacity .3s;
 
     @media only screen and (max-width: 750px) {
       height: fit-content;
@@ -73,19 +77,11 @@
   }
 
   &__floors {
-    height: var(--height);
-
-    @media only screen and (max-width: 750px) {
-      height: fit-content;
-    }
+    margin-bottom: 40rem;
   }
 
   &__mopping {
-    height: var(--height);
-
-    @media only screen and (max-width: 750px) {
-      height: fit-content;
-    }
+    margin-bottom: 40rem;
 
     & p:first-of-type {
       margin-bottom: 6.4rem;
@@ -97,10 +93,5 @@
   }
 
   &__order {
-    height: var(--height);
-
-    @media only screen and (max-width: 750px) {
-      height: fit-content;
-    }
   }
 }

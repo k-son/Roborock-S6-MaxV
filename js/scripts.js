@@ -36,8 +36,7 @@ const suctionVideo = document.querySelector('.s6MaxV__08-suction__suction__video
 const section08Suction = document.querySelector('.s6MaxV__08-suction__suction');
 
 // 09 Mapping
-const mappingBackground = document.querySelector('.s6MaxV__09-mapping__background');
-const mappingContainer = document.querySelector('.s6MaxV__09-mapping__container')
+const mappingBoxes = document.querySelectorAll('.s6MaxV__09-mapping__box');
 
 // 10 Learning
 const learningContainer = document.querySelector('.s6MaxV__10-learning__container');
@@ -97,7 +96,7 @@ function isElementInViewport(el) {
   }
 }
 
-function isElementFullyInViewportABC(el) {
+function isElementFullyInViewport(el) {
   if (el) {
     const position = el.getBoundingClientRect();
 
@@ -115,6 +114,16 @@ function ifElementScrolledUpIntoView(el, pixels) {
     return (
       (position.top >= 0 && position.top <= (window.innerHeight - pixels) 
       || (position.top < 0))
+    );
+  }
+}
+
+function ifElementScrolledDownOutOfView(el, pixels) {
+  if (el) {
+    const position = el.getBoundingClientRect();
+
+    return (
+      position.top >= pixels
     );
   }
 }
@@ -159,14 +168,14 @@ const slideUpSection03 = function() {
   const rect = penultimateH2.getBoundingClientRect();
 
   if (rect.top < 0 && rect.bottom <= window.innerHeight) {
-    section03.classList.add('s6MaxV-slideUpAndShow');
+    section03.classList.add('slideUpAndShow');
     section03.addEventListener('transitionend', () => {
-      textSection03.classList.add('s6MaxV-slideUpAndShow');
+      textSection03.classList.add('slideUpAndShow');
       videoSection03.play();
     });
     section03OffsetTop = section03.offsetTop;
   } else {
-    section03.classList.remove('s6MaxV-slideUpAndShow');
+    section03.classList.remove('slideUpAndShow');
   }
 };
 
@@ -212,15 +221,15 @@ window.addEventListener('scroll', showImageWithTooltip05);
 // slide up text
 const showPrivacyText = throttled(100, function() {
   if (ifElementScrolledUpIntoView(section06Privacy, 300)) {
-    privacyText.classList.add('s6MaxV-slideUpAndShow');
+    privacyText.classList.add('slideUpAndShow');
   } else {
-    privacyText.classList.remove('s6MaxV-slideUpAndShow');
+    privacyText.classList.remove('slideUpAndShow');
   }
 });
 
 // animation lock
 const animateLock = throttled(200, function() {
-  if (isElementFullyInViewportABC(privacyRoborockImage)) {
+  if (isElementFullyInViewport(privacyRoborockImage)) {
     privacyLockTop.classList.add('rotate-lock');
   } else {
     privacyLockTop.classList.remove('rotate-lock');
@@ -235,9 +244,9 @@ window.addEventListener('scroll', animateLock);
 //// *** 07 FLOOR ***
 const slideUpImageSection07Floor = throttled(200, function() {
   if (isElementInViewport(imageSection07Floor)) {
-    imageSection07Floor.classList.add('s6MaxV-slideUpAndShow');
+    imageSection07Floor.classList.add('slideUpAndShow');
   } else {
-    imageSection07Floor.classList.remove('s6MaxV-slideUpAndShow');
+    imageSection07Floor.classList.remove('slideUpAndShow');
   }
 });
 
@@ -248,9 +257,9 @@ window.addEventListener('scroll', slideUpImageSection07Floor);
 //// *** 08 SUCTION ***
 const slideUpFeaturesSection08Suction = throttled(200, function() {
   if (isElementInViewport(suctionFeatures)) {
-    suctionFeatures.classList.add('s6MaxV-slideUpAndShow');
+    suctionFeatures.classList.add('slideUpAndShow');
   } else {
-    suctionFeatures.classList.remove('s6MaxV-slideUpAndShow');
+    suctionFeatures.classList.remove('slideUpAndShow');
   }
 });
 
@@ -270,36 +279,27 @@ window.addEventListener('scroll', playVideoSuction);
 
 
 //// *** 09 MAPPING ***
-/*
-const abc = function() {
-  const mappingContainerBounds = mappingContainer.getBoundingClientRect();
-  if (mappingContainerBounds.top > 50) {
-    mappingContainer.classList.remove('s6MaxV-slideUpAndShow');
-  }
-};
-
-const handleSectionMapping = throttled(100, function() {
-  const backgroundPosition = mappingBackground.getBoundingClientRect();
-  if (backgroundPosition.top < 0) {
-    mappingBackground.classList.add('positionFixedTop');
-    mappingContainer.classList.add('s6MaxV-slideUpAndShow');
-    setTimeout(() => {
-      window.addEventListener('sroll', abc);
-    })
+const mappingBoxesOpacity = throttled(100, function() {
+  for (let i=0; i<mappingBoxes.length; i++) {
+    if (isElementInViewport(mappingBoxes[i])) {
+      if (mappingBoxes[i-1]) {
+        mappingBoxes[i-1].classList.add('opacity0');
+      }
+    } else {
+      if (mappingBoxes[i-1]) {
+        mappingBoxes[i-1].classList.remove('opacity0');
+      }
+    }
   }
 });
 
-window.addEventListener('scroll', handleSectionMapping);
-*/
-//// ** END OF: 09 MAPPING **
-
-
+window.addEventListener('scroll', mappingBoxesOpacity);
 //// *** 10 LEARNING ***
 const slideUpLearningContainer = throttled(200, function() {
-  if (ifElementScrolledUpIntoView(learningContainer, 300)) {
-    learningContainer.classList.add('s6MaxV-slideUpAndShow');
+  if (ifElementScrolledUpIntoView(learningContainer, 200)) {
+    learningContainer.classList.add('slideUpAndShow');
   } else {
-    learningContainer.classList.remove('s6MaxV-slideUpAndShow');
+    learningContainer.classList.remove('slideUpAndShow');
   }
 })
 
@@ -310,9 +310,9 @@ window.addEventListener('scroll', slideUpLearningContainer);
 //// *** 11 FEATURES ***
 const slideUpFeatures = throttled(200, function() {
   if (ifElementScrolledUpIntoView(section11Features, 300)) {
-    featuresSection11.forEach(el => el.classList.add('s6MaxV-slideUpAndShow'))
+    featuresSection11.forEach(el => el.classList.add('slideUpAndShow'))
   } else {
-    featuresSection11.forEach(el => el.classList.remove('s6MaxV-slideUpAndShow'));
+    featuresSection11.forEach(el => el.classList.remove('slideUpAndShow'));
   }
 });
 
