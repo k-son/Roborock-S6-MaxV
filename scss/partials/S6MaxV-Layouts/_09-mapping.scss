@@ -17,6 +17,7 @@
     z-index: -1;
 
     @media only screen and (max-width: 750px) {
+      position: static;
       height: 40rem;
       background-position: center 80%;
     }
@@ -35,6 +36,7 @@
     transition: opacity .3s;
 
     @media only screen and (max-width: 750px) {
+      position: static;
       height: fit-content;
       flex-direction: column;
       background-color: inherit;
@@ -78,10 +80,18 @@
 
   &__floors {
     margin-bottom: 40rem;
+
+    @media only screen and (max-width: 750px) {
+      margin-bottom: 4rem;
+    }
   }
 
   &__mopping {
     margin-bottom: 40rem;
+
+    @media only screen and (max-width: 750px) {
+      margin-bottom: 4rem;
+    }
 
     & p:first-of-type {
       margin-bottom: 6.4rem;
