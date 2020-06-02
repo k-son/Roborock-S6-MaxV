@@ -331,6 +331,7 @@ window.addEventListener('scroll', slideUpFeatures);
 
 
 //// *** TOOLTIPS ***
+
 tooltips = Array.from(tooltips);
 
 for (let i=0; i<tooltips.length; i++) {
@@ -363,4 +364,39 @@ for (let i=0; i<tooltips.length; i++) {
     })
   })
 }
+
+/*
+tooltips = Array.from(tooltips);
+
+for (let i=0; i<tooltips.length; i++) {
+  tooltips[i].addEventListener('click', function() {
+
+    // close any other open tooltip
+    const index = tooltips.indexOf(tooltips[i]);
+    const clonedTooltips = tooltips.slice(0);
+    clonedTooltips.splice(index, 1);
+
+    clonedTooltips.forEach(el => {
+      const tooltipBox = el.nextElementSibling;
+      const closeBtn = tooltipBox.firstChild;
+      tooltipBox.classList.remove('showTooltipText');
+      closeBtn.classList.add('displayNone'); // make closeBtn keyboard unaccessible
+      el.classList.remove('colorInfo');
+    });
+
+    // open selected tooltip
+    const tooltipBox = tooltips[i].nextElementSibling;
+    tooltipBox.classList.toggle('showTooltipText');
+    tooltips[i].classList.toggle('colorInfo');
+    closeTooltipBtns[i].classList.toggle('displayNone');
+
+    // close tooltip on close button press
+    closeTooltipBtns[i].addEventListener('click', function() {
+      tooltipBox.classList.remove('showTooltipText');
+      tooltips[i].classList.remove('colorInfo');
+      this.classList.add('displayNone');
+    })
+  })
+}
+*/
 //// ** END OF: TOOLTIPS **
