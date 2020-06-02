@@ -282,23 +282,28 @@ window.addEventListener('scroll', playVideoSuction);
 
 
 //// *** 09 MAPPING ***
+const mappingMatchMedia = window.matchMedia('(min-width: 751px)');
+
 const mappingBoxesOpacity = throttled(100, function() {
-  for (let i=0; i<mappingBoxes.length; i++) {
-    if (isElementInViewport(mappingBoxes[i])) {
-      if (mappingBoxes[i-1]) {
-        mappingBoxes[i-1].classList.add('opacity0');
-      }
-    } else {
-      if (mappingBoxes[i-1]) {
-        mappingBoxes[i-1].classList.remove('opacity0');
+  if (mappingMatchMedia.matches) {
+    for (let i=0; i<mappingBoxes.length; i++) {
+      if (isElementInViewport(mappingBoxes[i])) {
+        if (mappingBoxes[i-1]) {
+          mappingBoxes[i-1].classList.add('opacity0');
+        }
+      } else {
+        if (mappingBoxes[i-1]) {
+          mappingBoxes[i-1].classList.remove('opacity0');
+        }
       }
     }
   }
 });
+
+window.addEventListener('scroll', mappingBoxesOpacity);
 //// ** END OF: 09 MAPPING **
 
 
-window.addEventListener('scroll', mappingBoxesOpacity);
 //// *** 10 LEARNING ***
 const slideUpLearningContainer = throttled(200, function() {
   if (ifElementScrolledUpIntoView(learningContainer, 200)) {
