@@ -1,4 +1,7 @@
 /// VARIABLES
+// 00 Video
+const videoSection00 = document.querySelector('.s6MaxV__00-video-main video');
+
 // 01 Header
 const headerRoborockImages = document.querySelectorAll('.s6MaxV__01-header__img');
 const headerRoborockImage = document.querySelector('.s6MaxV__01-header__img');
@@ -118,18 +121,18 @@ function ifElementScrolledUpIntoView(el, pixels) {
   }
 }
 
-function ifElementScrolledDownOutOfView(el, pixels) {
-  if (el) {
-    const position = el.getBoundingClientRect();
-
-    return (
-      position.top >= pixels
-    );
-  }
-}
-
 
 /// MAIN SCRIPTS
+
+//// *** 00 VIDEO ***
+const playVideo00 = throttled(200, function() {
+  if (isElementInViewport(videoSection00)) {
+    videoSection00.play();
+  }
+});
+
+window.addEventListener('scroll', playVideo00);
+//// ** END OF: 00 VIDEO **
 
 //// *** 01 HEADER ***
 // update headerRoborockImageTop value on window resize
@@ -292,6 +295,8 @@ const mappingBoxesOpacity = throttled(100, function() {
     }
   }
 });
+//// ** END OF: 09 MAPPING **
+
 
 window.addEventListener('scroll', mappingBoxesOpacity);
 //// *** 10 LEARNING ***
