@@ -1,4 +1,5 @@
 /// VARIABLES
+
 // 00 Video
 const videoSection00 = document.querySelector('.s6MaxV__00-video-main video');
 
@@ -54,20 +55,7 @@ let tooltipTexts = document.querySelectorAll('.tooltiptext');
 const closeTooltipBtns = document.querySelectorAll('.tooltipCloseBtn');
 
 
-/// HELPER FUNCTIONS
-function debounced(delay, fn) {
-  let timerId;
-
-  return function (...args) {
-      if (timerId) {
-          clearTimeout(timerId);
-      }
-      timerId = setTimeout(() => {
-          fn(...args);
-          timerId = null;
-      }, delay);
-  }
-}
+/// REUSABLE FUNCTIONS
 
 function throttled(delay, fn) {
   let lastCall = 0;
@@ -79,6 +67,20 @@ function throttled(delay, fn) {
       }
       lastCall = now;
       return fn(...args);
+  }
+}
+
+function debounced(delay, fn) {
+  let timerId;
+
+  return function (...args) {
+      if (timerId) {
+          clearTimeout(timerId);
+      }
+      timerId = setTimeout(() => {
+          fn(...args);
+          timerId = null;
+      }, delay);
   }
 }
 
@@ -134,21 +136,22 @@ const playVideo00 = throttled(200, function() {
 window.addEventListener('scroll', playVideo00);
 //// ** END OF: 00 VIDEO **
 
-//// *** 01 HEADER ***
-// update headerRoborockImageTop value on window resize
-window.addEventListener('resize', () => headerRoborockImageTop = headerRoborockImage.offsetTop);
 
+//// *** 01 HEADER ***
 // after scroll down more than 'headerRoborockImageTop' value, change images' position to fixed and center them in viewport
-function fixedPositionHeaderRoborockImages() {
+const fixedPositionHeaderRoborockImages = function() {
   if (window.pageYOffset > headerRoborockImageTop) {
     headerRoborockImages.forEach(el => el.classList.add('fixedRoborockImage'));
   } else {
     headerRoborockImages.forEach(el => el.classList.remove('fixedRoborockImage'));
   }
-}
+};
+
+window.addEventListener('scroll', fixedPositionHeaderRoborockImages);
+
 
 // after scroll down more than 'headerRoborockImageTop' value, start repleacing images
-function replaceHeaderRoborockImages() {
+const replaceHeaderRoborockImages = function() {
   let distanceFromTop = headerRoborockImageTop;
 
   for (let i=0; i<headerRoborockImages.length; i++) {
@@ -160,8 +163,11 @@ function replaceHeaderRoborockImages() {
   }
 }
 
-window.addEventListener('scroll', fixedPositionHeaderRoborockImages);
 window.addEventListener('scroll', replaceHeaderRoborockImages);
+
+
+// update headerRoborockImageTop value on window resize
+window.addEventListener('resize', () => headerRoborockImageTop = headerRoborockImage.offsetTop);
 //// ** END OF: 01 HEADER **
 
 
@@ -182,6 +188,9 @@ const slideUpSection03 = function() {
   }
 };
 
+window.addEventListener('scroll', slideUpSection03);
+
+
 // hide headerRoborockImages when pageYOffset value is higher than section03 offsetTop
 const hideHeaderRoborockImages = function() {
   if (window.pageYOffset > section03OffsetTop) {
@@ -189,7 +198,6 @@ const hideHeaderRoborockImages = function() {
   }
 };
 
-window.addEventListener('scroll', slideUpSection03);
 window.addEventListener('scroll', hideHeaderRoborockImages);
 //// ** END OF: 03 VIDEO AND TEXT **
 
@@ -230,6 +238,9 @@ const showPrivacyText = throttled(100, function() {
   }
 });
 
+window.addEventListener('scroll', showPrivacyText);
+
+
 // animation lock
 const animateLock = throttled(200, function() {
   if (isElementFullyInViewport(privacyRoborockImage)) {
@@ -239,7 +250,6 @@ const animateLock = throttled(200, function() {
   }
 });
 
-window.addEventListener('scroll', showPrivacyText);
 window.addEventListener('scroll', animateLock);
 //// ** END OF: 06 PRIVACY **
 
@@ -266,6 +276,9 @@ const slideUpFeaturesSection08Suction = throttled(200, function() {
   }
 });
 
+window.addEventListener('scroll', slideUpFeaturesSection08Suction);
+
+
 const playVideoSuction = throttled(200, function() {
   const suctionVideoHeight = suctionVideo.clientHeight;
   const height = suctionVideoHeight * .75;
@@ -276,7 +289,7 @@ const playVideoSuction = throttled(200, function() {
   }
 });
 
-window.addEventListener('scroll', slideUpFeaturesSection08Suction);
+
 window.addEventListener('scroll', playVideoSuction);
 //// ** END OF: 08 SUCTION **
 
@@ -331,7 +344,6 @@ window.addEventListener('scroll', slideUpFeatures);
 
 
 //// *** TOOLTIPS ***
-
 tooltips = Array.from(tooltips);
 
 for (let i=0; i<tooltips.length; i++) {
@@ -364,39 +376,4 @@ for (let i=0; i<tooltips.length; i++) {
     })
   })
 }
-
-/*
-tooltips = Array.from(tooltips);
-
-for (let i=0; i<tooltips.length; i++) {
-  tooltips[i].addEventListener('click', function() {
-
-    // close any other open tooltip
-    const index = tooltips.indexOf(tooltips[i]);
-    const clonedTooltips = tooltips.slice(0);
-    clonedTooltips.splice(index, 1);
-
-    clonedTooltips.forEach(el => {
-      const tooltipBox = el.nextElementSibling;
-      const closeBtn = tooltipBox.firstChild;
-      tooltipBox.classList.remove('showTooltipText');
-      closeBtn.classList.add('displayNone'); // make closeBtn keyboard unaccessible
-      el.classList.remove('colorInfo');
-    });
-
-    // open selected tooltip
-    const tooltipBox = tooltips[i].nextElementSibling;
-    tooltipBox.classList.toggle('showTooltipText');
-    tooltips[i].classList.toggle('colorInfo');
-    closeTooltipBtns[i].classList.toggle('displayNone');
-
-    // close tooltip on close button press
-    closeTooltipBtns[i].addEventListener('click', function() {
-      tooltipBox.classList.remove('showTooltipText');
-      tooltips[i].classList.remove('colorInfo');
-      this.classList.add('displayNone');
-    })
-  })
-}
-*/
 //// ** END OF: TOOLTIPS **
