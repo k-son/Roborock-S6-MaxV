@@ -1,4 +1,4 @@
-/// VARIABLES
+///// VARIABLES
 
 // 00 Video
 const videoSection00 = document.querySelector('.s6MaxV__00-video-main video');
@@ -55,7 +55,7 @@ let tooltipTexts = document.querySelectorAll('.tooltiptext');
 const closeTooltipBtns = document.querySelectorAll('.tooltipCloseBtn');
 
 
-/// REUSABLE FUNCTIONS
+///// REUSABLE FUNCTIONS
 
 function throttled(delay, fn) {
   let lastCall = 0;
@@ -124,7 +124,7 @@ function ifElementScrolledUpIntoView(el, pixels) {
 }
 
 
-/// MAIN SCRIPTS
+///// MAIN SCRIPTS
 
 //// *** 00 VIDEO ***
 const playVideo00 = throttled(200, function() {
