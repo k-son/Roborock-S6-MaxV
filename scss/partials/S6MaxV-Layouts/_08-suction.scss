@@ -133,12 +133,14 @@
       }
     }
 
-    &__video {
-      display: block;
+    &__video-box {
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-      height: auto;
       margin-left: 20%;
+      overflow: hidden;
 
       @media only screen and (max-width: $bp-medium) {
         width: 130%;
@@ -146,6 +148,13 @@
         left: 50%;
         transform: translateX(-50%);
       }
+    }
+
+    &__video {
+      display: block;
+
+      width: 102%;
+      height: auto;
     }
   }
 }
