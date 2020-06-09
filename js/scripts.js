@@ -139,19 +139,19 @@ window.addEventListener('scroll', playVideo00);
 
 //// *** 01 HEADER ***
 // after scroll down more than 'headerRoborockImageTop' value, change images' position to fixed and center them in viewport
-const fixedPositionHeaderRoborockImages = function() {
+const fixedPositionHeaderRoborockImages = throttled(100, function() {
   if (window.pageYOffset > headerRoborockImageTop) {
     headerRoborockImages.forEach(el => el.classList.add('fixedRoborockImage'));
   } else {
     headerRoborockImages.forEach(el => el.classList.remove('fixedRoborockImage'));
   }
-};
+});
 
 window.addEventListener('scroll', fixedPositionHeaderRoborockImages);
 
 
 // after scroll down more than 'headerRoborockImageTop' value, start repleacing images
-const replaceHeaderRoborockImages = function() {
+const replaceHeaderRoborockImages = throttled(100, function() {
   let distanceFromTop = headerRoborockImageTop;
 
   for (let i=0; i<headerRoborockImages.length; i++) {
@@ -161,7 +161,7 @@ const replaceHeaderRoborockImages = function() {
       headerRoborockImages[i].classList.remove('displayNone');
     }
   }
-}
+});
 
 window.addEventListener('scroll', replaceHeaderRoborockImages);
 
