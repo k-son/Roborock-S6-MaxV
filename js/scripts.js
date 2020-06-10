@@ -5,7 +5,6 @@ const videoSection00 = document.querySelector('.s6MaxV__00-video-main video');
 
 // 01 Header
 const headerRoborockImages = document.querySelectorAll('.s6MaxV__01-header__img');
-//const headerRoborockImage = document.querySelector('.s6MaxV__01-header__img');
 const headerRoborockImageContainer = document.querySelector('.s6MaxV__01-header__image-container');
 let headerRoborockImageContainerTop = headerRoborockImageContainer.offsetTop;
 
@@ -139,25 +138,14 @@ window.addEventListener('scroll', playVideo00);
 
 
 //// *** 01 HEADER ***
-// after scroll down more than 'headerRoborockImageContainerTop' value, change images' position to fixed and center them in viewport
-/*
-const fixedPositionHeaderRoborockImages = throttled(100, function() {
-  if (window.pageYOffset > headerRoborockImageContainerTop) {
-    headerRoborockImages.forEach(el => el.classList.add('fixedRoborockImage'));
-  } else {
-    headerRoborockImages.forEach(el => el.classList.remove('fixedRoborockImage'));
-  }
-});
-
-window.addEventListener('scroll', fixedPositionHeaderRoborockImages);
-*/
+// after scroll down more than 'headerRoborockImageContainerTop' value, change container's position to fixed 
 const fixedHeaderRoborockImageContainer = throttled(100, function() {
   if (window.pageYOffset > headerRoborockImageContainerTop) {
     headerRoborockImageContainer.classList.add('fixedRoborockImage');
   } else {
     headerRoborockImageContainer.classList.remove('fixedRoborockImage');
   }
-})
+});
 
 window.addEventListener('scroll', fixedHeaderRoborockImageContainer);
 
