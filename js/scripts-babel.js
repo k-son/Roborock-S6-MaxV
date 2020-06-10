@@ -5,8 +5,8 @@
 var videoSection00 = document.querySelector('.s6MaxV__00-video-main video'); // 01 Header
 
 var headerRoborockImages = document.querySelectorAll('.s6MaxV__01-header__img');
-var headerRoborockImage = document.querySelector('.s6MaxV__01-header__img');
-var headerRoborockImageTop = headerRoborockImage.offsetTop; // 02 Texts
+var headerRoborockImageContainer = document.querySelector('.s6MaxV__01-header__image-container');
+var headerRoborockImageContainerTop = headerRoborockImageContainer.offsetTop; // 02 Texts
 
 var penultimateH2 = document.querySelector('.s6MaxV__02-texts__text h2:nth-last-child(2)'); // acts as an anchor for showing up section 03
 // 03 Video and text
@@ -107,23 +107,19 @@ var playVideo00 = throttled(200, function () {
 });
 window.addEventListener('scroll', playVideo00); //// ** END OF: 00 VIDEO **
 //// *** 01 HEADER ***
-// after scroll down more than 'headerRoborockImageTop' value, change images' position to fixed and center them in viewport
+// after scroll down more than 'headerRoborockImageContainerTop' value, change container's position to fixed 
 
-var fixedPositionHeaderRoborockImages = throttled(100, function () {
-  if (window.pageYOffset > headerRoborockImageTop) {
-    headerRoborockImages.forEach(function (el) {
-      return el.classList.add('fixedRoborockImage');
-    });
+var fixedHeaderRoborockImageContainer = throttled(100, function () {
+  if (window.pageYOffset > headerRoborockImageContainerTop) {
+    headerRoborockImageContainer.classList.add('fixedRoborockImage');
   } else {
-    headerRoborockImages.forEach(function (el) {
-      return el.classList.remove('fixedRoborockImage');
-    });
+    headerRoborockImageContainer.classList.remove('fixedRoborockImage');
   }
 });
-window.addEventListener('scroll', fixedPositionHeaderRoborockImages); // after scroll down more than 'headerRoborockImageTop' value, start repleacing images
+window.addEventListener('scroll', fixedHeaderRoborockImageContainer); // after scroll down more than 'headerRoborockImageContainerTop' value, start repleacing images
 
-var replaceHeaderRoborockImages = throttled(300, function () {
-  var distanceFromTop = headerRoborockImageTop;
+var replaceHeaderRoborockImages = throttled(100, function () {
+  var distanceFromTop = headerRoborockImageContainerTop;
 
   for (var i = 0; i < headerRoborockImages.length; i++) {
     distanceFromTop += 30;
@@ -136,10 +132,10 @@ var replaceHeaderRoborockImages = throttled(300, function () {
     }
   }
 });
-window.addEventListener('scroll', replaceHeaderRoborockImages); // update headerRoborockImageTop value on window resize
+window.addEventListener('scroll', replaceHeaderRoborockImages); // update headerRoborockImageContainerTop value on window resize
 
 window.addEventListener('resize', function () {
-  return headerRoborockImageTop = headerRoborockImage.offsetTop;
+  return headerRoborockImageContainerTop = headerRoborockImageContainer.offsetTop;
 }); //// ** END OF: 01 HEADER **
 //// *** 03 VIDEO AND TEXT ***
 // when 'section03' comes into view, slide it up and read it offsetTop
