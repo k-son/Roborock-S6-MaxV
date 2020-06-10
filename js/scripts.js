@@ -5,8 +5,9 @@ const videoSection00 = document.querySelector('.s6MaxV__00-video-main video');
 
 // 01 Header
 const headerRoborockImages = document.querySelectorAll('.s6MaxV__01-header__img');
-const headerRoborockImage = document.querySelector('.s6MaxV__01-header__img');
-let headerRoborockImageTop = headerRoborockImage.offsetTop;
+//const headerRoborockImage = document.querySelector('.s6MaxV__01-header__img');
+const headerRoborockImageContainer = document.querySelector('.s6MaxV__01-header__image-container');
+let headerRoborockImageContainerTop = headerRoborockImageContainer.offsetTop;
 
 // 02 Texts
 const penultimateH2 = document.querySelector('.s6MaxV__02-texts__text h2:nth-last-child(2)'); // acts as an anchor for showing up section 03
@@ -138,9 +139,10 @@ window.addEventListener('scroll', playVideo00);
 
 
 //// *** 01 HEADER ***
-// after scroll down more than 'headerRoborockImageTop' value, change images' position to fixed and center them in viewport
+// after scroll down more than 'headerRoborockImageContainerTop' value, change images' position to fixed and center them in viewport
+/*
 const fixedPositionHeaderRoborockImages = throttled(100, function() {
-  if (window.pageYOffset > headerRoborockImageTop) {
+  if (window.pageYOffset > headerRoborockImageContainerTop) {
     headerRoborockImages.forEach(el => el.classList.add('fixedRoborockImage'));
   } else {
     headerRoborockImages.forEach(el => el.classList.remove('fixedRoborockImage'));
@@ -148,11 +150,21 @@ const fixedPositionHeaderRoborockImages = throttled(100, function() {
 });
 
 window.addEventListener('scroll', fixedPositionHeaderRoborockImages);
+*/
+const fixedHeaderRoborockImageContainer = throttled(100, function() {
+  if (window.pageYOffset > headerRoborockImageContainerTop) {
+    headerRoborockImageContainer.classList.add('fixedRoborockImage');
+  } else {
+    headerRoborockImageContainer.classList.remove('fixedRoborockImage');
+  }
+})
+
+window.addEventListener('scroll', fixedHeaderRoborockImageContainer);
 
 
-// after scroll down more than 'headerRoborockImageTop' value, start repleacing images
+// after scroll down more than 'headerRoborockImageContainerTop' value, start repleacing images
 const replaceHeaderRoborockImages = throttled(100, function() {
-  let distanceFromTop = headerRoborockImageTop;
+  let distanceFromTop = headerRoborockImageContainerTop;
 
   for (let i=0; i<headerRoborockImages.length; i++) {
     distanceFromTop += 30;
@@ -166,8 +178,8 @@ const replaceHeaderRoborockImages = throttled(100, function() {
 window.addEventListener('scroll', replaceHeaderRoborockImages);
 
 
-// update headerRoborockImageTop value on window resize
-window.addEventListener('resize', () => headerRoborockImageTop = headerRoborockImage.offsetTop);
+// update headerRoborockImageContainerTop value on window resize
+window.addEventListener('resize', () => headerRoborockImageContainerTop = headerRoborockImageContainer.offsetTop);
 //// ** END OF: 01 HEADER **
 
 

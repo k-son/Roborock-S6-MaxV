@@ -1,4 +1,4 @@
-.s6MaxV__01-header {
+/*.s6MaxV__01-header {
   position: relative;
   width: 100%;
   height: 90rem;
@@ -41,30 +41,19 @@
   position: fixed;
   top: 0;
 }
+*/
 
-/*
 .s6MaxV__01-header {
   position: relative;
   width: 100%;
-  margin: 0 auto;
-
-  &__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 90rem;
-    background-image: url(../images/heros-s6maxV-banner.jpg);
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-  }
+  height: 90rem;
+  background-image: url(../images/heros-s6maxV-banner.jpg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 
   &__text {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     margin-top: 8rem;
     padding: 0 2rem;
 
@@ -75,36 +64,35 @@
     }
   }
 
-  &__img {
-    display: block;
-    position: absolute;
+  &__image-container {
+    @include center;
     top: 10rem;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 10rem;
     height: 70rem;
-    width: auto;
-
-    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media only screen and (max-width: 500px) {
-      margin-top: 15rem;
+      top: 15rem;
       height: 60rem;
     }
 
     @media only screen and (max-width: 400px) {
-      margin-top: 20rem;
+      top: 20rem;
       height: 55rem;
     }
+    }
+  
+  &__img {
+    height: 100%;
+    width: auto;
   }
+
 }
 
 // js classes 
 .fixedRoborockImage {
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9;
 }
-*/
+
