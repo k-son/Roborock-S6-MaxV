@@ -1,3 +1,5 @@
+"use strict";
+
 ///// VARIABLES
 
 // 00 Video
