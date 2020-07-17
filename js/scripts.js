@@ -353,7 +353,7 @@ for (let i=0; i<tooltips.length; i++) {
 
     // close any other open tooltip
     const index = tooltips.indexOf(tooltips[i]);
-    const clonedTooltips = tooltips.slice(0);
+    const clonedTooltips = [...tooltips];
     clonedTooltips.splice(index, 1);
 
     clonedTooltips.forEach(el => {
