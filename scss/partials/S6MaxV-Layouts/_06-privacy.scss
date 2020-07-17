@@ -101,9 +101,10 @@
   }
 
   &__never {
+    display: none;
 
     @media only screen and (max-width: $bp-small) {
-      display: block;
+      display: none;
     }
   }
 }
