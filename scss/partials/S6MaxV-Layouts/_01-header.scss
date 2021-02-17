@@ -26,6 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .3s;
 
     @media only screen and (max-width: 500px) {
       top: 15rem;
