@@ -403,4 +403,4 @@ annotationCloseBtn.addEventListener('click', function() {
   annotationWrapper.dataset.opener = 'none';
   annotationBtn.forEach(function(btn) {btn.classList.remove('annotation-btn--active')});
 });
-//// ** END OF: TOOLTIPS **
+//// ** END OF: TEXT ANNOTATIONS **
