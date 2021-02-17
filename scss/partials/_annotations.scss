@@ -1,4 +1,44 @@
 // TEXT ANNOTATIONS
+/* buttons */
+.annotation-btn {
+  position: relative;
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  margin-right: 1ch; /* adjust considering the font */
+  border-bottom: .1em dotted #4d88fe; /* fallback */
+  border-bottom: .1em dotted var(--color-annotation);
+  vertical-align: baseline;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.annotation-btn:hover {
+  border-bottom: .1em solid #4d88fe; /* fallback */
+  border-bottom: .1em solid var(--color-annotation);
+}
+
+.annotation-btn:hover::after {
+  color: #4d88fe; /* fallback */
+  color: var(--color-annotation);
+}
+
+.annotation-btn--active {
+  color: #4d88fe; /* fallback */
+  color: var(--color-annotation);
+}
+
+.annotation-btn::after {
+  content: "**";
+  display: inline;
+  position: absolute;
+  top: -.3em;
+  left: 100%;
+  font-size: 70%; /* adjust considering the font */
+  color: inherit;
+}
+
+/* annotations */
 .annotation-wrapper {
   position: relative;
   display: block;
