@@ -51,10 +51,6 @@ const learningContainer = document.querySelector('.s6MaxV__10-learning__containe
 const section11Features = document.querySelector('.s6MaxV__11-features');
 const featuresSection11 = document.querySelectorAll('.s6MaxV__11-features__feature');
 
-// Tooltips
-let tooltips = document.querySelectorAll('.tooltip');
-let tooltipTexts = document.querySelectorAll('.tooltiptext');
-const closeTooltipBtns = document.querySelectorAll('.tooltipCloseBtn');
 
 
 ///// REUSABLE FUNCTIONS
@@ -345,37 +341,66 @@ window.addEventListener('scroll', slideUpFeatures);
 //// ** END OF: 11 FEATURES **
 
 
-//// *** TOOLTIPS ***
-tooltips = Array.from(tooltips);
+//// *** TEXT ANNOTATIONS ***
+const annotationBtn = document.querySelectorAll('.annotation-btn');
+const annotationWrapper = document.querySelector('.annotation-wrapper');
+const annotationCloseBtn = document.querySelector('.annotation-close-btn');
+const annotationParagraph = document.querySelector('.annotation-text');
 
-for (let i=0; i<tooltips.length; i++) {
-  tooltips[i].addEventListener('click', function() {
-
-    // close any other open tooltip
-    const index = tooltips.indexOf(tooltips[i]);
-    const clonedTooltips = [...tooltips];
-    clonedTooltips.splice(index, 1);
-
-    clonedTooltips.forEach(el => {
-      const tooltipBox = el.nextElementSibling.nextElementSibling;
-      const closeBtn = tooltipBox.firstChild;
-      tooltipBox.classList.remove('showTooltipText');
-      closeBtn.classList.add('displayNone'); // make closeBtn keyboard unaccessible
-      el.classList.remove('colorInfo');
-    });
-
-    // open selected tooltip
-    const tooltipBox = tooltips[i].nextElementSibling.nextElementSibling;
-    tooltipBox.classList.toggle('showTooltipText');
-    tooltips[i].classList.toggle('colorInfo');
-    closeTooltipBtns[i].classList.toggle('displayNone');
-
-    // close tooltip on close button press
-    closeTooltipBtns[i].addEventListener('click', function() {
-      tooltipBox.classList.remove('showTooltipText');
-      tooltips[i].classList.remove('colorInfo');
-      this.classList.add('displayNone');
-    })
-  })
+/* put here your annotations texts */
+const annotationTexts = {
+  "text-01": "Rzeczywiste ikony wyświetlane w aplikacji mogą różnić się od tych, przedstawionych w opisie.",
+  "text-02": "Testy wewnętrzne producenta zgodnie z normami IEC 62885-5: 2016/5.8.",
+  "text-03": "W oparciu o wewnętrzne testy producenta, przeprowadzone w trybie cichym, z pełną baterią i bez podłączonego mopa.",
+  "text-04": "Aplikacja może zapisać maksymalnie 4 mapy. Mapa każdego piętra musi być indywidualnie ustawiona przed rozpoczęciem sprzątania.",
+  "text-05": " Na podstawie wewnętrznego testu producenta, wykonanego na twardych podłogach, z pełnym zbiornikiem wody, pełnym akumulatorem i niskim przepływem wody. Rzeczywiste wyniki mogą się różnić w zależności od charakterystyki pomieszczenia. Zasięg jest wartością szacunkową, opartą na założeniu, że 20% powierzchni zajmują meble i nie trzeba ich wycierać.",
+  "text-06": "Testy wewnętrzne producenta, przeprowadzone w trybie zrównoważonym, zgodnie ze standardami QB / T 483.",
+  "text-07": "Produkowane i testowane przez firmę niezależną, zgodnie z normami EN 1822-1: 2009."
 }
+
+/* .annotation-btn events */
+annotationBtn.forEach(function(button) {
+  button.addEventListener('click', function() {
+    const num = this.dataset.text;
+    const text = annotationTexts[num];
+    /* opener indicates which button has launched the annotation */
+    const opener = annotationWrapper.dataset.opener;
+
+    if (opener === 'none') {
+      annotationParagraph.innerHTML = text;
+      this.setAttribute('aria-describedby', 'annotation-text');
+      annotationWrapper.dataset.opener = this.id;
+      annotationWrapper.classList.add('show-annotation');
+      this.classList.add('annotation-btn--active');
+
+    } else if (opener === this.getAttribute('id')) {
+      annotationWrapper.classList.remove('show-annotation');
+      setTimeout(function() {
+        annotationParagraph.innerHTML = '';
+      }, 300);
+      this.setAttribute('aria-describedby', '');
+      annotationWrapper.dataset.opener = 'none';
+      this.classList.remove('annotation-btn--active');
+      
+    } else if ((opener !== annotationWrapper.getAttribute('id') && (opener !== 'none'))) {
+      annotationParagraph.innerHTML = text;
+      annotationBtn.forEach(function(btn) {btn.setAttribute('aria-describedby', '')});
+      this.setAttribute('aria-describedby', 'annotation-text');
+      annotationWrapper.dataset.opener = this.id;
+      annotationBtn.forEach(function(btn) {btn.classList.remove('annotation-btn--active')});
+      this.classList.add('annotation-btn--active');
+    }
+  })
+})
+
+/* .annotation-close-btn events */
+annotationCloseBtn.addEventListener('click', function() {
+  annotationWrapper.classList.remove('show-annotation');
+  setTimeout(function() {
+    annotationParagraph.innerHTML = '';
+  }, 300);
+  annotationBtn.forEach(function(btn) {btn.setAttribute('aria-describedby', '')});
+  annotationWrapper.dataset.opener = 'none';
+  annotationBtn.forEach(function(btn) {btn.classList.remove('annotation-btn--active')});
+});
 //// ** END OF: TOOLTIPS **
