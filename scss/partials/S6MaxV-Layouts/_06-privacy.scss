@@ -1,19 +1,20 @@
 .s6MaxV__06-privacy {
   position: relative;
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  padding: 6.4rem 2rem;
+  padding: 6.4rem 2rem 0;
   overflow: hidden;
   margin-bottom: 6.4rem;
 
-  @media only screen and (max-width: $bp-medium) {
-    flex-direction: column-reverse;
-    align-items: center;
+  @media only screen and (min-width: 421px) {
+    padding: 6.4rem 2rem;
   }
 
-  @media only screen and (max-width: 420px) {
-    padding: 6.4rem 2rem 0;
+  @media only screen and (min-width: 901px) {
+    flex-direction: row;
+    align-items: flex-start;
   }
 
   &__images {
@@ -21,62 +22,68 @@
 
     &__roborock {
       display: block;
-      width: 40vw;
-      max-width: 50rem;
+      width: 60vw;
+      min-width: 20rem;
       height: auto;
       padding: 0 2rem;
 
-      @media only screen and (max-width: $bp-medium) {
-        width: 60vw;
-        min-width: 20rem;
+      @media only screen and (min-width: 901px) {
+        width: 40vw;
+        max-width: 50rem;
       }
     }
   }
 
-    &__lock {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
+  &__lock {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
 
-      &__top {
-        position: relative;
-        display: block;
+    &__top {
+      position: relative;
+      display: block;
+      width: 13vw;
+      max-width: 8rem;
+      height: auto;
+
+      @media only screen and (min-width: 601px) {
         width: 8rem;
-        height: auto;
-
-        @media only screen and (max-width: $bp-small) {
-          width: 13vw;
-          max-width: 8rem;
-        }
-      }
-
-      &__body {
-        display: block;
-        width: 8rem;
-        height: auto;
-
-        @media only screen and (max-width: $bp-small) {
-          width: 13vw;
-          max-width: 8rem;
-        }
       }
     }
 
+    &__top.rotate-lock {
+      animation: rotate-lock .3s linear .5s 1;
+    }
+
+    &__body {
+      display: block;
+      width: 13vw;
+      max-width: 8rem;
+      height: auto;
+
+      @media only screen and (min-width: 601px) {
+        width: 8rem;
+      }
+    }
+  }
+
   &__text {
-    padding: 0 4rem;
+    width: 90%;
+    padding: 0;
+    margin-bottom: 6.4rem;
     margin-top: 4rem; // animated in js
     opacity: 0; // animated in js
     transition: opacity .4s, margin-top .5s;
 
-    @media only screen and (max-width: $bp-medium) {
-      margin-bottom: 6.4rem;
+    @media only screen and (min-width: 421px) {
+      width: 100%;
+      padding: 0 4rem;
     }
 
-    @media only screen and (max-width: 420px) {
-      width: 90%;
-      padding: 0;
+    @media only screen and (min-width: 901px) {
+      margin-bottom: 0;
     }
 
     & h2 {
@@ -90,8 +97,10 @@
     }
 
     & h3 {
-      @media only screen and (max-width: 450px) {
-        font-size: 4.4vw;
+      font-size: 4.4vw;
+
+      @media only screen and (min-width: 451px) {
+        font-size: 2.2rem;
       }
     }
 
@@ -99,21 +108,8 @@
       margin-bottom: 1.6rem;
     }
   }
-
-  &__never {
-    display: none;
-
-    @media only screen and (max-width: $bp-small) {
-      display: none;
-    }
-  }
 }
 
-
-// js classes
-.rotate-lock {
-  animation: rotate-lock .3s linear .5s 1;
-}
 
 @keyframes rotate-lock {
   0% {

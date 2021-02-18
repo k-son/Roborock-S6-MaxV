@@ -135,13 +135,14 @@ window.addEventListener('scroll', playVideo00);
 //// ** END OF: 00 VIDEO **
 
 
+
 //// *** 01 HEADER ***
 // after scroll down more than 'headerRoborockImageContainerTop' value, change container's position to fixed 
 const fixedHeaderRoborockImageContainer = throttled(100, function() {
   if (window.pageYOffset > headerRoborockImageContainerTop) {
-    headerRoborockImageContainer.classList.add('fixedRoborockImage');
+    headerRoborockImageContainer.classList.add('fixed');
   } else {
-    headerRoborockImageContainer.classList.remove('fixedRoborockImage');
+    headerRoborockImageContainer.classList.remove('fixed');
   }
 });
 
