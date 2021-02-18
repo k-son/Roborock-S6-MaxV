@@ -3,12 +3,12 @@
   margin-bottom: 6.4rem;
 
   &__text {
-    width: 70%;
+    width: 90%;
     max-width: 90rem;
     margin: 0 auto 6.4rem;
 
-    @media only screen and (max-width: $bp-small) {
-      width: 90%;
+    @media only screen and (min-width: 601px) {
+      width: 70%;
     }
 
     & h2 {
@@ -23,67 +23,60 @@
 
   &__features {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    width: 85%;
     justify-content: center;
     max-width: 130rem;
-    margin-bottom: 3.2rem;
-    margin-top: 12rem; // animated in js
+    margin: 12rem auto 3.2rem; // margin-top animated in js
     opacity: 0; // animated in js
     transition: opacity .4s, margin-top .5s;
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (min-width: 751px) {
       grid-template-columns: repeat(2, 1fr);
-      width: 85%;
-      margin: 16rem auto 3.2rem;
-    }
-
-    @media only screen and (max-width: 750px) {
-      grid-template-columns: 1fr;
       width: 90%;
     }
 
+    @media only screen and (min-width: 1001px) {
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      margin: 16rem auto 3.2rem;
+    }
   }
 
   &__feature {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 3.2rem;
 
-    @media only screen and (max-width: 1000px) {
-      margin-bottom: 3.2rem;
-    }
-
-    @media only screen and (max-width: 750px) {
+    @media only screen and (min-width: 601px) {
       align-items: center;
     }
 
-    @media only screen and (max-width: 600px) {
-      align-items: flex-start;
+    @media only screen and (min-width: 751px) {
+      align-items: center;
     }
 
     &__value {
-      font-size: 4rem;
+      font-size: 2.8rem;
       font-weight: 700;
       color: #6d818d;
 
-      @media only screen and (max-width: $bp-large) {
+      @media only screen and (min-width: 751px) {
         font-size: 3.2rem;
       } 
 
-      @media only screen and (max-width: 750px) {
-        font-size: 2.8rem;
+      @media only screen and (min-width: 1101px) {
+        font-size: 4rem;
       } 
     }
 
     &__prop {
       @include S6MaxV-paragraph;
+      font-size: 1.4rem;
 
-      @media only screen and (max-width: $bp-large) {
+      @media only screen and (min-width: 751px) {
         font-size: 1.6rem;
-      } 
-
-      @media only screen and (max-width: 750px) {
-        font-size: 1.4rem;
       } 
     }
   }
@@ -94,59 +87,57 @@
     transition: all .5s;
 
     &__text {
-      position: absolute;
-      top: 50%;
-      left: 20%;
-      transform: translate(-50%, -50%);
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      margin-bottom: 3.2rem;
       z-index: 2;
 
-      @media only screen and (max-width: $bp-medium) {
-        position: static;
-        top: unset;
-        left: unset;
-        transform: unset;
-        align-items: center;
-        margin-bottom: 3.2rem;
+      @media only screen and (min-width: 901px) {
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        align-items: flex-start;
       }
 
       &__value {
-        font-size: 16rem;
+        font-size: 20vw;
         font-weight: 500;
         color: #6d818d;
 
-        @media only screen and (max-width: $bp-medium) {
-          font-size: 20vw;
+        @media only screen and (min-width: 901px) {
+          font-size: 16rem;
         }
       }
 
       &__prop {
-        font-size: 5.4rem;
+        font-size: 6vw;
         text-transform: capitalize;
         color: #6d818d;
 
-        @media only screen and (max-width: $bp-medium) {
-          font-size: 6vw;
+        @media only screen and (min-width: 901px) {
+          font-size: 5.4rem;
         }
       }
     }
 
     &__video-box {
       position: relative;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      margin-left: 20%;
+      width: 130%;
+      margin-left: 0;
       overflow: hidden;
 
-      @media only screen and (max-width: $bp-medium) {
-        width: 130%;
-        margin-left: 0;
-        left: 50%;
-        transform: translateX(-50%);
+      @media only screen and (min-width: 901px) {
+        width: 100%;
+        margin-left: 20%;
+        left: 0;
+        transform: unset;
       }
     }
 
