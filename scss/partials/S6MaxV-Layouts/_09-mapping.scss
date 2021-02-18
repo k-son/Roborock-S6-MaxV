@@ -1,57 +1,56 @@
 .s6MaxV__09-mapping {
+  --height: 70rem;
   position: relative;
   margin-bottom: 6.4rem;
 
-  --height: 70rem;
-
   &__background {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    min-height: var(--height);
+    position: static;
+    height: 40rem;
     width: 100%;
     margin-bottom: 4rem;
     background-image: url(../images/s6maxV-mapping-background.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: center 80%;
     z-index: -1;
 
-    @media only screen and (max-width: 750px) {
-      position: static;
-      height: 40rem;
-      background-position: center 80%;
+    @media only screen and (min-width: 751px) {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      min-height: var(--height);
+      background-position: center;
     }
   }
 
   &__box {
+    position: static;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    min-height: var(--height);
+    height: fit-content;
     padding: 3.2rem;
-    background-color: rgba(255, 255, 255, .85);
     transition: opacity .3s;
 
-    @media only screen and (max-width: 750px) {
-      position: static;
-      height: fit-content;
-      flex-direction: column;
-      background-color: inherit;
+    @media only screen and (min-width: 751px) {
+      position: sticky;
+      top: 0;
+      flex-direction: row;
+      height: 100vh;
+      min-height: var(--height);
+      background-color: rgba(255, 255, 255, .85);
     }
   }
 
   &__text {
-    width: 35%;
-
-    @media only screen and (max-width: 750px) {
+    width: 90%;
+    
+    @media only screen and (min-width: 421px) {
       width: 70%;
     }
 
-    @media only screen and (max-width: 420px) {
-      width: 90%;
+    @media only screen and (min-width: 751px) {
+      width: 35%;
     }
 
     & h2 {
@@ -62,42 +61,43 @@
 
     & p {
       @include S6MaxV-paragraph(left);
+      margin-bottom: 1.6rem;
 
-      @media only screen and (max-width: 750px) {
-        margin-bottom: 1.6rem;
+      @media only screen and (min-width: 751px) {
+        margin-bottom: 0;
        }
     }
   }
 
   &__img {
-    width: 45%;
+    width: 70%;
     height: auto;
 
-    @media only screen and (max-width: 750px) {
-      width: 70%;
+    @media only screen and (min-width: 751px) {
+      width: 45%;
     }
   }
 
   &__floors {
-    margin-bottom: 40rem;
+    margin-bottom: 4rem;
 
-    @media only screen and (max-width: 750px) {
-      margin-bottom: 4rem;
+    @media only screen and (min-width: 751px) {
+      margin-bottom: 40rem;
     }
   }
 
   &__mopping {
-    margin-bottom: 40rem;
+    margin-bottom: 4rem;
 
-    @media only screen and (max-width: 750px) {
-      margin-bottom: 4rem;
+    @media only screen and (min-width: 751px) {
+      margin-bottom: 40rem;
     }
 
     & p:first-of-type {
-      margin-bottom: 6.4rem;
+      margin-bottom: 4.8rem;
 
-      @media only screen and (max-width: 750px) {
-       margin-bottom: 4.8rem;
+      @media only screen and (min-width: 751px) {
+       margin-bottom: 6.4rem;
       }
     }
   }
