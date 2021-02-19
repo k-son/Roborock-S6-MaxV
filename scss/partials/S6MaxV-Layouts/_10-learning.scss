@@ -29,7 +29,6 @@
       margin-bottom: 10.4rem;
     }
 
-
     & h2 {
       margin-bottom: 1.6rem;
 
@@ -45,36 +44,36 @@
 
   &__graphic {
     display: block;
-    width: 54rem;
+    width: 80%;
     height: auto;
     margin: 0 auto;
-
-    @media only screen and (max-width: $bp-medium) {
+    
+    @media only screen and (min-width: 421px) {
       width: 36rem;
     }
 
-    @media only screen and (max-width: 420px) {
-      width: 80%;
+    @media only screen and (min-width: 901px) {
+      width: 54rem;
     }
   }
 
   &__picture {
     display: block;
-    width: 48rem;
+    width: 60%;
+    bottom: -8rem;
     height: auto;
     position: absolute;
     left: 50%;
-    bottom: -20rem;
     transform: translateX(-50%);
 
-    @media only screen and (max-width: $bp-medium) {
+    @media only screen and (min-width: 421px) {
       width: 32rem;
       bottom: -12rem;
     }
 
-    @media only screen and (max-width: 420px) {
-      width: 60%;
-      bottom: -8rem;
+    @media only screen and (min-width: 901px) {
+      width: 48rem;
+      bottom: -20rem;
     }
   }
 }

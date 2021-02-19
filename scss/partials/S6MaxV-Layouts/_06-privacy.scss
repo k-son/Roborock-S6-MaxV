@@ -4,17 +4,18 @@
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
-  padding: 6.4rem 2rem 0;
+  padding: 0 2rem;
   overflow: hidden;
   margin-bottom: 6.4rem;
 
   @media only screen and (min-width: 421px) {
-    padding: 6.4rem 2rem;
+    
   }
 
   @media only screen and (min-width: 901px) {
     flex-direction: row;
     align-items: flex-start;
+    padding: 6.4rem 2rem;
   }
 
   &__images {
@@ -73,7 +74,7 @@
     width: 90%;
     padding: 0;
     margin-bottom: 6.4rem;
-    margin-top: 4rem; // animated in js
+    margin-top: 0; // animated in js
     opacity: 0; // animated in js
     transition: opacity .4s, margin-top .5s;
 
@@ -84,6 +85,7 @@
 
     @media only screen and (min-width: 901px) {
       margin-bottom: 0;
+      margin-top: 4rem; // animated in js
     }
 
     & h2 {
